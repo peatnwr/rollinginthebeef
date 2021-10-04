@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity"
+    android:background="#F1F1F1">
+
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+        <SearchView
+            android:id="@+id/SearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Search"
+            android:searchIcon="@drawable/ic_search"
+            android:iconifiedByDefault="false"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/searchview_background"
+            android:queryBackground="@android:color/transparent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Australia_Beef"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Australia-Beef"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:background="@drawable/buttom_stype" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Japan_Beef"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Japen-Beef"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/buttom_stype" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Us_Beef"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="US-Beef"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:background="@drawable/buttom_stype" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/recommended"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="recommended"
+            />
+<!--        scrollbar       -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"/>
+<!--        end         -->
+<!--        layout-->
+<!--        endlayout-->
+    </LinearLayout>
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabCradleMargin="20dp"
+        app:fabCradleRoundedCornerRadius="20dp"
+        app:fabCradleVerticalOffset="10dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            app:menu="@menu/bottom_nav_menu" />
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_grocery"
+        app:layout_anchor="@id/bottomAppBar" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

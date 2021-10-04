@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F1"
+    android:padding="20dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/toppick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_back"/>
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Order History"
+            android:textSize="24sp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:background="@drawable/searchview_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="G03 Meat Meat"
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"
+            android:textAllCaps="true"
+            android:textAlignment="center"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/receipt_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No. Receipt : RC0000000001"/>
+            <TextView
+                android:id="@+id/receipt_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date 6/08/2564"
+                android:textAlignment="textEnd"
+                android:layout_toRightOf="@id/receipt_id"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Customer Name : Oh Au"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send To Forturn Place"
+            android:layout_marginBottom="10dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="5dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/Product_Name_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount  Product NamePrice"/>
+            <TextView
+                android:id="@+id/Product_price_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textAlignment="textEnd"
+                android:layout_toRightOf="@id/Product_Name_title"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/Product_Amount"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textAlignment="center"
+                android:text="1"/>
+            <TextView
+                android:id="@+id/Product_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:text="WAGYU KUMAMOTO A3 "
+                android:layout_toRightOf="@id/Product_Amount"/>
+            <TextView
+                android:id="@+id/Product_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3,550"
+                android:textAlignment="textEnd"
+                android:layout_toRightOf="@id/Product_Name"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/Product_Amount2"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textAlignment="center"
+                android:text="1"/>
+            <TextView
+                android:id="@+id/Product_Name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:text="AMERICAN WAGYU STRIPLOIN "
+                android:layout_toRightOf="@id/Product_Amount2"/>
+            <TextView
+                android:id="@+id/Product_price2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3,550"
+                android:textAlignment="textEnd"
+                android:layout_toRightOf="@id/Product_Name2"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/Text_Total"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:text="Total"
+                android:textColor="#FF9052"/>
+            <TextView
+                android:id="@+id/Total_price2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6,200"
+                android:textSize="18sp"
+                android:textAlignment="textEnd"
+                android:textColor="#FF9052"
+                android:layout_toRightOf="@id/Text_Total"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Transfer Proof"
+                android:layout_marginBottom="10dp"
+                android:layout_centerHorizontal="true"/>
+            <ImageView
+                android:layout_below="@id/title"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:background="@drawable/img_receiptsucces"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Receipt Time : 10.56 น."
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Received Time : 7/08/2564   18.54 น."
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status : Successful "
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

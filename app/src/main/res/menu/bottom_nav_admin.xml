@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/miHomeAdmin"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/miDeliveryStatus"
+        android:title="Delivery Status"
+        android:icon="@drawable/ic_list"/>
+    <item
+        android:id="@+id/placeholder"
+        android:title=""/>
+    <item
+        android:id="@+id/miAddProduct"
+        android:title="Add Product"
+        android:icon="@drawable/ic_add_product" />
+    <item
+        android:id="@+id/miUserAdmin"
+        android:title="User"
+        android:icon="@drawable/ic_user" />
+</menu>
