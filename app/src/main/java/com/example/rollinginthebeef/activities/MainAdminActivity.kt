@@ -24,22 +24,14 @@ class MainAdminActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainAdminBinding
     val productList = arrayListOf<Product>()
+    val data = intent.extras
+    val adminData: infoUserParcel? = data?.getParcelable("adminData")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val data = intent.extras
-        val adminData: infoUserParcel? = data?.getParcelable("adminData")
-
-        val userID = adminData?.userID.toString().toInt()
-        val userName = adminData?.userName.toString()
-        val userTel = adminData?.userTel.toString()
-        val userAddress = adminData?.userAddress.toString()
-        val userEmail = adminData?.userEmail.toString()
-        val nameUser = adminData?.nameUser.toString()
 
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false
@@ -48,14 +40,14 @@ class MainAdminActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.miDeliveryStatus -> {
                     val deliveryStatusAdminPage = Intent(this@MainAdminActivity, DeliveryStatusAdminActivity::class.java)
-                    deliveryStatusAdminPage.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+                    deliveryStatusAdminPage.putExtra("adminData", adminData)
                     startActivity(deliveryStatusAdminPage)
                 }
                 R.id.miAddProduct -> {
                 }
                 R.id.miUserAdmin -> {
                     val profileAdminPage = Intent(this@MainAdminActivity, ProfileAdminActivity::class.java)
-                    profileAdminPage.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+                    profileAdminPage.putExtra("adminData", adminData)
                     startActivity(profileAdminPage)
                 }
             }
@@ -67,7 +59,7 @@ class MainAdminActivity : AppCompatActivity() {
 
         binding.orderAdmin.setOnClickListener {
             val orderAdmin = Intent(this@MainAdminActivity, OrderAdminActivity::class.java)
-            orderAdmin.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+            orderAdmin.putExtra("adminData", adminData)
             startActivity(orderAdmin)
         }
     }

@@ -14,22 +14,20 @@ import com.example.rollinginthebeef.modules.infoUserParcel
 class ProfileAdminActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileAdminBinding
+    val data = intent.extras
+    val adminData: infoUserParcel? = data?.getParcelable("adminData")
+
+    val edtNameText: EditText = findViewById(R.id.edtNameAdminPage)
+    val edtEmailText: EditText = findViewById(R.id.edtEmailAdminPage)
+    val edtTelText: EditText = findViewById(R.id.edtTelAdminPage)
+    val edtAddressText: EditText = findViewById(R.id.edtAddressAdminPage)
+    val edtUsernameText: EditText = findViewById(R.id.edtUsernameAdminPage)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityProfileAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val data = intent.extras
-        val adminData: infoUserParcel? = data?.getParcelable("adminData")
-
-        val userID = adminData?.userID.toString().toInt()
-        val userName = adminData?.userName.toString()
-        val userTel = adminData?.userTel.toString()
-        val userAddress = adminData?.userAddress.toString()
-        val userEmail = adminData?.userEmail.toString()
-        val nameUser = adminData?.nameUser.toString()
 
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false
@@ -38,12 +36,12 @@ class ProfileAdminActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.miHomeAdmin -> {
                     val mainAdminPage = Intent(this@ProfileAdminActivity, MainAdminActivity::class.java)
-                    mainAdminPage.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+                    mainAdminPage.putExtra("adminData", adminData)
                     startActivity(mainAdminPage)
                 }
                 R.id.miDeliveryStatus -> {
                     val deliveryStatusAdminPage = Intent(this@ProfileAdminActivity, DeliveryStatusAdminActivity::class.java)
-                    deliveryStatusAdminPage.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+                    deliveryStatusAdminPage.putExtra("adminData", adminData)
                     startActivity(deliveryStatusAdminPage)
                 }
                 R.id.miAddProduct -> {
@@ -52,18 +50,18 @@ class ProfileAdminActivity : AppCompatActivity() {
             true
         }
 
-        val edtNameText: EditText = findViewById(R.id.edtNameAdminPage)
-        val edtEmailText: EditText = findViewById(R.id.edtEmailAdminPage)
-        val edtTelText: EditText = findViewById(R.id.edtTelAdminPage)
-        val edtAddressText: EditText = findViewById(R.id.edtAddressAdminPage)
-        val edtUsernameText: EditText = findViewById(R.id.edtUsernameAdminPage)
+        binding.orderAdmin.setOnClickListener {
+            val orderAdmin = Intent(this@ProfileAdminActivity, OrderAdminActivity::class.java)
+            orderAdmin.putExtra("adminData", adminData)
+            startActivity(orderAdmin)
+        }
 
-        binding.textUsername.text = nameUser
-        edtNameText.setText(nameUser)
-        edtEmailText.setText(userEmail)
-        edtTelText.setText(userTel)
-        edtAddressText.setText(userAddress)
-        edtUsernameText.setText(userName)
+        binding.textUsername.text = adminData?.nameUser
+        edtNameText.setText(adminData?.nameUser)
+        edtEmailText.setText(adminData?.userEmail)
+        edtTelText.setText(adminData?.userTel)
+        edtAddressText.setText(adminData?.userAddress)
+        edtUsernameText.setText(adminData?.userName)
 
     }
 
@@ -92,34 +90,14 @@ class ProfileAdminActivity : AppCompatActivity() {
     }
 
     fun editProfileAdminPageByText(v: View){
-        val data = intent.extras
-        val adminData: infoUserParcel? = data?.getParcelable("adminData")
-
-        val userID = adminData?.userID.toString().toInt()
-        val userName = adminData?.userName.toString()
-        val userTel = adminData?.userTel.toString()
-        val userAddress = adminData?.userAddress.toString()
-        val userEmail = adminData?.userEmail.toString()
-        val nameUser = adminData?.nameUser.toString()
-
         val editProfileAdminByText = Intent(this, EditProfileAdminActivity::class.java)
-        editProfileAdminByText.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+        editProfileAdminByText.putExtra("adminData", adminData)
         startActivity(editProfileAdminByText)
     }
 
     fun editProfileAdminPageByButton(v: View){
-        val data = intent.extras
-        val adminData: infoUserParcel? = data?.getParcelable("adminData")
-
-        val userID = adminData?.userID.toString().toInt()
-        val userName = adminData?.userName.toString()
-        val userTel = adminData?.userTel.toString()
-        val userAddress = adminData?.userAddress.toString()
-        val userEmail = adminData?.userEmail.toString()
-        val nameUser = adminData?.nameUser.toString()
-
         val editProfileAdminByText = Intent(this, EditProfileAdminActivity::class.java)
-        editProfileAdminByText.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+        editProfileAdminByText.putExtra("adminData", adminData)
         startActivity(editProfileAdminByText)
     }
 
