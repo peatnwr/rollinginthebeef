@@ -17,6 +17,7 @@
             android:padding="10dp"
             android:layout_marginLeft="10dp">
             <TextView
+                android:id="@+id/txOrderID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -24,18 +25,21 @@
                 android:textColor="@color/black"
                 android:text="Order ID : RC0000000001 "/>
             <TextView
+                android:id="@+id/txCustomer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textColor="@color/black"
                 android:text="Customer :   AuInwza "/>
             <TextView
+                android:id="@+id/txOrderStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textColor="@color/black"
                 android:text="Status  : Waiting for Confirmation"/>
             <TextView
+                android:id="@+id/txOrderDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -55,12 +59,14 @@
                 android:layout_marginRight="15dp"
                 android:background="@drawable/ic_arrow"
                 android:rotation="270" />
+
             <TextView
+                android:id="@+id/txOrderPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:text="Total : 6,200 ฿"
-                android:textColor="#FF9052"
-                android:layout_alignParentBottom="true" />
+                android:textColor="#FF9052" />
         </RelativeLayout>
     </LinearLayout>
 

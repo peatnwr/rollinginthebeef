@@ -72,11 +72,13 @@ class OrderAdminActivity : AppCompatActivity() {
             adminData?.userID.toString().toInt()
         ).enqueue(object : Callback<List<Order>>{
             override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
-
+                response.body()?.forEach {
+                    orderList.add(Order(it.user_id, it.user_username, it.order_id, it.order_date, it.order_total, it.order_status))
+                }
             }
 
             override fun onFailure(call: Call<List<Order>>, t: Throwable) {
-
+                t.printStackTrace()
             }
         })
     }
