@@ -10,14 +10,14 @@ import com.example.rollinginthebeef.modules.infoUserParcel
 class DeliveryStatusAdminActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDeliveryStatusAdminBinding
-    val data = intent.extras
-    val adminData: infoUserParcel? = data?.getParcelable("adminData")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityDeliveryStatusAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val data = intent.extras
+        val adminData: infoUserParcel? = data?.getParcelable("adminData")
 
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false

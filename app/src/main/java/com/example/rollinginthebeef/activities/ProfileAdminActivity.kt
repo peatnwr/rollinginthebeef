@@ -14,20 +14,14 @@ import com.example.rollinginthebeef.modules.infoUserParcel
 class ProfileAdminActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileAdminBinding
-    val data = intent.extras
-    val adminData: infoUserParcel? = data?.getParcelable("adminData")
-
-    val edtNameText: EditText = findViewById(R.id.edtNameAdminPage)
-    val edtEmailText: EditText = findViewById(R.id.edtEmailAdminPage)
-    val edtTelText: EditText = findViewById(R.id.edtTelAdminPage)
-    val edtAddressText: EditText = findViewById(R.id.edtAddressAdminPage)
-    val edtUsernameText: EditText = findViewById(R.id.edtUsernameAdminPage)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityProfileAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val data = intent.extras
+        val adminData: infoUserParcel? = data?.getParcelable("adminData")
 
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false
@@ -55,6 +49,12 @@ class ProfileAdminActivity : AppCompatActivity() {
             orderAdmin.putExtra("adminData", adminData)
             startActivity(orderAdmin)
         }
+
+        val edtNameText: EditText = findViewById(R.id.edtNameAdminPage)
+        val edtEmailText: EditText = findViewById(R.id.edtEmailAdminPage)
+        val edtTelText: EditText = findViewById(R.id.edtTelAdminPage)
+        val edtAddressText: EditText = findViewById(R.id.edtAddressAdminPage)
+        val edtUsernameText: EditText = findViewById(R.id.edtUsernameAdminPage)
 
         binding.textUsername.text = adminData?.nameUser
         edtNameText.setText(adminData?.nameUser)
@@ -90,12 +90,18 @@ class ProfileAdminActivity : AppCompatActivity() {
     }
 
     fun editProfileAdminPageByText(v: View){
+        val data = intent.extras
+        val adminData: infoUserParcel? = data?.getParcelable("adminData")
+
         val editProfileAdminByText = Intent(this, EditProfileAdminActivity::class.java)
         editProfileAdminByText.putExtra("adminData", adminData)
         startActivity(editProfileAdminByText)
     }
 
     fun editProfileAdminPageByButton(v: View){
+        val data = intent.extras
+        val adminData: infoUserParcel? = data?.getParcelable("adminData")
+
         val editProfileAdminByText = Intent(this, EditProfileAdminActivity::class.java)
         editProfileAdminByText.putExtra("adminData", adminData)
         startActivity(editProfileAdminByText)

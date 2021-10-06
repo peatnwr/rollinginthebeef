@@ -24,14 +24,14 @@ class MainAdminActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainAdminBinding
     val productList = arrayListOf<Product>()
-    val data = intent.extras
-    val adminData: infoUserParcel? = data?.getParcelable("adminData")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val data = intent.extras
+        val adminData: infoUserParcel? = data?.getParcelable("adminData")
 
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false
