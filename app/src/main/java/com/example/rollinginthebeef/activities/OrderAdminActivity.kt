@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityOrderAdminBinding
 import com.example.rollinginthebeef.modules.Order
+import com.example.rollinginthebeef.modules.OrderAdapter
 import com.example.rollinginthebeef.modules.infoUserParcel
 import com.example.rollinginthebeef.retrofits.dataAPI
 import retrofit2.Call
@@ -52,6 +54,9 @@ class OrderAdminActivity : AppCompatActivity() {
             }
             true
         }
+
+        binding.recyclerViewAdminOrder.adapter = OrderAdapter(this.orderList, applicationContext)
+        binding.recyclerViewAdminOrder.layoutManager = LinearLayoutManager(applicationContext)
     }
 
     override fun onResume() {
@@ -75,6 +80,7 @@ class OrderAdminActivity : AppCompatActivity() {
                 response.body()?.forEach {
                     orderList.add(Order(it.user_id, it.user_username, it.order_id, it.order_date, it.order_total, it.order_status))
                 }
+                binding.recyclerViewAdminOrder.adapter = OrderAdapter(orderList, applicationContext)
             }
 
             override fun onFailure(call: Call<List<Order>>, t: Throwable) {

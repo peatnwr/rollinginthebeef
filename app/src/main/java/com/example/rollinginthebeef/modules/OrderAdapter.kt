@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rollinginthebeef.databinding.OrderItemLayoutBinding
 
-class OrderAdapter(val orderList: ArrayList<Order>?, context: Context)
+class OrderAdapter(val orderList: ArrayList<Order>?, val context: Context)
     : RecyclerView.Adapter<OrderAdapter.ViewHolder>(){
     inner class ViewHolder(view: View, val binding: OrderItemLayoutBinding)
         : RecyclerView.ViewHolder(view){
