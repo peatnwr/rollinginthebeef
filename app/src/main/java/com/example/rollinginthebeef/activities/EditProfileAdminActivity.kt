@@ -35,7 +35,7 @@ class EditProfileAdminActivity : AppCompatActivity() {
         edtEmail.setText(adminData?.userEmail)
         edtTel.setText(adminData?.userTel)
         edtAddress.setText(adminData?.userAddress)
-        edtUsername.setText(adminData?.userName)
+        edtUsername.setText(adminData?.userID.toString().toInt())
         edtPassword.setText("")
         edtCfPassword.setText("")
     }
