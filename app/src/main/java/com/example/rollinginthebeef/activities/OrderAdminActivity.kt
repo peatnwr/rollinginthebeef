@@ -84,7 +84,7 @@ class OrderAdminActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<Order>>, t: Throwable) {
-                t.printStackTrace()
+                return t.printStackTrace()
             }
         })
     }
