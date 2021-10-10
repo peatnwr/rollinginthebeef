@@ -10,8 +10,6 @@ interface dataAPI {
     @GET("allproduct")
     fun retrieveProduct(): Call<List<Product>>
 
-    @GET("order/{user_id}")
-    fun retrieveOrder(
-        @Path("user_id") user_id: String
-    ): Call<List<Order>>
+    @GET("order")
+    fun retrieveOrder(): Call<List<Order>>
 }

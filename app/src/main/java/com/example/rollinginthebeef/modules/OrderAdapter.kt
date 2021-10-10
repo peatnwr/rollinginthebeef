@@ -20,11 +20,17 @@ class OrderAdapter(val orderList: ArrayList<Order>?, val context: Context)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
-        binding.txOrderID.text = orderList!![position].order_id.toString()
-        binding.txCustomer.text = orderList!![position].user_username
-        binding.txOrderStatus.text = orderList!![position].order_status.toString()
-        binding.txOrderDate.text = orderList!![position].order_date
-        binding.txOrderPrice.text = orderList!![position].order_total.toString()
+        var statusMessage = ""
+        orderList?.forEach {
+            when(it.order_status.toString()){
+                "2" -> { statusMessage = "Waiting for Confirmation" }
+            }
+        }
+        binding.txOrderID.text = "Order ID : " + orderList!![position].order_id.toString()
+        binding.txCustomer.text = "Customer : " + orderList!![position].user_username
+        binding.txOrderStatus.text = "Status : $statusMessage"
+        binding.txOrderDate.text = "Order Date : " + orderList!![position].order_date
+        binding.txOrderPrice.text = "Total : " + orderList!![position].order_total.toString() + " ฿"
     }
 
     override fun getItemCount(): Int {

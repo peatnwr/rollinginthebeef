@@ -3,7 +3,6 @@ package com.example.rollinginthebeef.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityOrderAdminBinding
@@ -74,7 +73,6 @@ class OrderAdminActivity : AppCompatActivity() {
             .build()
             .create(dataAPI::class.java)
         api.retrieveOrder(
-            adminData?.userID.toString()
         ).enqueue(object : Callback<List<Order>>{
             override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
                 response.body()?.forEach {

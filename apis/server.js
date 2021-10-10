@@ -24,17 +24,11 @@ app.get('/allproduct/', function(req, res) {
     });
 });
 
-app.get('/order/:user_id', function(req, res) {
-    let userID = req.params.user_id
-
-    if(!userID){
-        res.status(400).send({ error: true, message: "Please provide user id" });
-    } else {
-        dbConn.query('SELECT `user`.`user_id`, `user`.`user_username`, `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `order`.`order_status` FROM `user`, `order` WHERE `order`.`user_id` = ? AND `user`.`user_id` = ? ', [userID, userID], function(error, results, fields) {
-            if(error) throw error;
-            return res.send(results);
-        });
-    }
+app.get('/order/', function(req, res) {
+    dbConn.query('SELECT `user`.`user_id`, `user`.`user_username`, `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `order`.`order_status` FROM `user`, `order` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 2', function(error, results, fields) {
+        if(error) throw error;
+        return res.send(results);
+    });
 })
 
 app.post('/login/', function(req, res) {
