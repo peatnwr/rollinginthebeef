@@ -31,6 +31,20 @@ app.get('/order/', function(req, res) {
     });
 })
 
+app.get('/orderdetail/:order_id/:user_id', function(req, res) {
+    let orderID = req.params.order_id
+    let userID = req.params.user_id
+
+    if(!orderID || !userID){
+        res.status(400).send({ error: true, message: "Please provide order id and user id" })
+    }else{
+        dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `user`.`user_name`, `user`.`user_address`, `orderdetail`.`orderdetail_qty`, `product`.`product_name`, `orderdetail`.`orderdetail_price`, `order`.`order_total` FROM `order`, `user`, `product`, `orderdetail` WHERE `order`.`order_id` = ? AND `orderdetail`.`order_id` = ? AND `user`.`user_id` = ? AND `orderdetail`.`product_id` = `product`.`product_id`', [orderID, orderID, userID], function(error, results, fields) {
+            if(error) throw error;
+            return res.send(results)
+        })
+    }
+})
+
 app.post('/login/', function(req, res) {
     let data = req.body // GET POST params
 

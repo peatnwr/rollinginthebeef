@@ -8,6 +8,7 @@
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/drawable/ic_back.xml" value="0.3828125" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/drawable/ic_grocery.xml" value="0.3828125" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/drawable/ic_home.xml" value="0.3828125" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_confirm_order_payment.xml" value="0.24937027707808565" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_customer_account.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_delivery_status_admin.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_detail.xml" value="0.36666666666666664" />
@@ -25,6 +26,7 @@
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/buttom_nonstyle.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/cart.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/category_item_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/confirm_order_item_layout.xml" value="0.26902173913043476" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/customer_account.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/delivery_status.xml" value="0.25" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/delivery_status_admin.xml" value="0.2776268115942029" />
@@ -37,7 +39,7 @@
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/layoutlogin.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/loginpase.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/notification_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/order_detail.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/order_detail.xml" value="0.26902173913043476" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/order_history.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/order_history_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/order_history_detial.xml" value="0.36666666666666664" />

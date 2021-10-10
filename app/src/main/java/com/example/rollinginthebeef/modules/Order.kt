@@ -17,7 +17,7 @@ class Order(
     @SerializedName("order_date") val order_date: String,
 
     @Expose
-    @SerializedName("order_total") val order_total: Float,
+    @SerializedName("order_total") val order_total: Int,
 
     @Expose
     @SerializedName("order_status") val order_status: Int) {}

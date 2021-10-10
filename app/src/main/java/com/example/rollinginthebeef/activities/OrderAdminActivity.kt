@@ -31,6 +31,7 @@ class OrderAdminActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false
+        binding.bottomNavigationView.selectedItemId = R.id.placeholder
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.miHomeAdmin -> {
@@ -65,15 +66,12 @@ class OrderAdminActivity : AppCompatActivity() {
 
     fun callOrderData(){
         orderList.clear()
-        val data = intent.extras
-        val adminData: infoUserParcel? = data?.getParcelable("adminData")
         val api: dataAPI = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(dataAPI::class.java)
-        api.retrieveOrder(
-        ).enqueue(object : Callback<List<Order>>{
+        api.retrieveOrder().enqueue(object : Callback<List<Order>>{
             override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
                 response.body()?.forEach {
                     orderList.add(Order(it.user_id, it.user_username, it.order_id, it.order_date, it.order_total, it.order_status))
