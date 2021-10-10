@@ -74,7 +74,7 @@ class OrderAdminActivity : AppCompatActivity() {
             .build()
             .create(dataAPI::class.java)
         api.retrieveOrder(
-            adminData?.userID.toString().toInt()
+            adminData?.userID.toString()
         ).enqueue(object : Callback<List<Order>>{
             override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
                 response.body()?.forEach {

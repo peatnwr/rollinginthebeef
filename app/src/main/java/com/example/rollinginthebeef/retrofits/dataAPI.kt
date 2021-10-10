@@ -12,6 +12,6 @@ interface dataAPI {
 
     @GET("order/{user_id}")
     fun retrieveOrder(
-        @Path("user_id") user_id: Int
+        @Path("user_id") user_id: String
     ): Call<List<Order>>
 }
