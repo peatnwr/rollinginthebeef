@@ -74,7 +74,7 @@ class OrderAdminActivity : AppCompatActivity() {
         api.retrieveOrder().enqueue(object : Callback<List<Order>>{
             override fun onResponse(call: Call<List<Order>>, response: Response<List<Order>>) {
                 response.body()?.forEach {
-                    orderList.add(Order(it.user_id, it.user_username, it.order_id, it.order_date, it.order_total, it.order_status))
+                    orderList.add(Order(it.user_id, it.user_username, it.user_name, it.order_id, it.order_date, it.order_total, it.order_status))
                 }
                 binding.recyclerViewAdminOrder.adapter = OrderAdapter(orderList, applicationContext)
             }

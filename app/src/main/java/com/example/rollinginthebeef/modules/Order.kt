@@ -11,6 +11,9 @@ class Order(
     @SerializedName("user_username") val user_username: String,
 
     @Expose
+    @SerializedName("user_name") val user_name: String,
+
+    @Expose
     @SerializedName("order_id") val order_id: Int,
 
     @Expose

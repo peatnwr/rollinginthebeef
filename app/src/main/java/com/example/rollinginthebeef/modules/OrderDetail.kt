@@ -26,4 +26,7 @@ class OrderDetail(
     @SerializedName("orderdetail_price") val orderdetail_price: Int,
 
     @Expose
-    @SerializedName("order_total") val order_total: Int) {}
+    @SerializedName("order_total") val order_total: Int,
+
+    @Expose
+    @SerializedName("receipt_img") val receipt_img: String) {}

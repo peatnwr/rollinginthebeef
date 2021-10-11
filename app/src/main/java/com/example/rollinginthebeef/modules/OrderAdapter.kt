@@ -43,7 +43,7 @@ class OrderAdapter(val orderList: ArrayList<Order>, val context: Context) : Recy
         }
 
         binding.txOrderID.text = "Order ID : " + orderList!![position].order_id.toString()
-        binding.txCustomer.text = "Customer : " + orderList!![position].user_username
+        binding.txCustomer.text = "Customer : " + orderList!![position].user_name
         binding.txOrderStatus.text = "Status : $statusMessage"
         binding.txOrderDate.text = "Order Date : $dateFormat"
         binding.txOrderPrice.text = "Total : " + orderList!![position].order_total.toString() + " ฿"

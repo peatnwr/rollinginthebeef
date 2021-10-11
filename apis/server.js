@@ -25,7 +25,7 @@ app.get('/allproduct/', function(req, res) {
 });
 
 app.get('/order/', function(req, res) {
-    dbConn.query('SELECT `user`.`user_id`, `user`.`user_username`, `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `order`.`order_status` FROM `user`, `order` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 2', function(error, results, fields) {
+    dbConn.query('SELECT `user`.`user_id`, `user`.`user_username`, `user`.`user_name`, `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `order`.`order_status` FROM `user`, `order` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 2', function(error, results, fields) {
         if(error) throw error;
         return res.send(results);
     });
@@ -38,12 +38,25 @@ app.get('/orderdetail/:order_id/:user_id', function(req, res) {
     if(!orderID || !userID){
         res.status(400).send({ error: true, message: "Please provide order id and user id" })
     }else{
-        dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `user`.`user_name`, `user`.`user_address`, `orderdetail`.`orderdetail_qty`, `product`.`product_name`, `orderdetail`.`orderdetail_price`, `order`.`order_total` FROM `order`, `user`, `product`, `orderdetail` WHERE `order`.`order_id` = ? AND `orderdetail`.`order_id` = ? AND `user`.`user_id` = ? AND `orderdetail`.`product_id` = `product`.`product_id`', [orderID, orderID, userID], function(error, results, fields) {
+        dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `user`.`user_name`, `user`.`user_address`, `orderdetail`.`orderdetail_qty`, `product`.`product_name`, `orderdetail`.`orderdetail_price`, `order`.`order_total`, `order`.`receipt_img` FROM `order`, `user`, `product`, `orderdetail` WHERE `order`.`order_id` = ? AND `orderdetail`.`order_id` = ? AND `user`.`user_id` = ? AND `orderdetail`.`product_id` = `product`.`product_id`;', [orderID, orderID, userID], function(error, results, fields) {
             if(error) throw error;
             return res.send(results)
         })
     }
 })
+
+app.patch('/confirmpayment/:order_id', function(req, res) {
+    let orderID = req.params.order_id
+
+    if(!orderID){
+        res.status(400).send({ error: true, message: "Please provide order id" })
+    } else {
+        dbConn.query('UPDATE `order` SET `order`.`order_status` = 3, `order`.`order_tracking` = 1 WHERE `order`.`order_id` = ?', orderID, function(error, results, fields) {
+            if(error) throw error;
+            return res.send(results);
+        });
+    }
+});
 
 app.post('/login/', function(req, res) {
     let data = req.body // GET POST params
