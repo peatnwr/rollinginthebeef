@@ -58,6 +58,13 @@ app.patch('/confirmpayment/:order_id', function(req, res) {
     }
 });
 
+app.get('/deliverystatus/', function(req, res) {
+    dbConn.query('SELECT `user`.`user_id`, `user`.`user_name`, `user`.`user_address`, `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `order`.`order_status` FROM `user`, `order` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 3 AND `order`.`order_tracking` = 1', function(error, results, fields) {
+        if(error) throw error;
+        return res.send(results);
+    });
+});
+
 app.post('/login/', function(req, res) {
     let data = req.body // GET POST params
 

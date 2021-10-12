@@ -1,5 +1,6 @@
 package com.example.rollinginthebeef.retrofits
 
+import com.example.rollinginthebeef.modules.DeliveryStatus
 import com.example.rollinginthebeef.modules.Order
 import com.example.rollinginthebeef.modules.OrderDetail
 import com.example.rollinginthebeef.modules.Product
@@ -25,4 +26,7 @@ interface dataAPI {
     fun confirmPayment(
         @Path("order_id") order_id: String
     ): Call<OrderDetail>
+
+    @GET("deliverystatus")
+    fun retrieveStatusDelivery(): Call<List<DeliveryStatus>>
 }

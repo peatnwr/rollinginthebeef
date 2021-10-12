@@ -11,13 +11,14 @@ import com.example.rollinginthebeef.activities.DeliveryStatusAdminActivity
 import com.example.rollinginthebeef.databinding.OrderItemLayoutBinding
 import kotlin.collections.ArrayList
 
-class OrderAdapter(val orderList: ArrayList<Order>, val context: Context) : RecyclerView.Adapter<OrderAdapter.ViewHolder>(){
+class OrderAdapter(val orderList: ArrayList<Order>, val adminData: infoUserParcel?, val context: Context) : RecyclerView.Adapter<OrderAdapter.ViewHolder>(){
     inner class ViewHolder(view: View, val binding: OrderItemLayoutBinding) : RecyclerView.ViewHolder(view) {
         init {
             binding.btnConfirmPaymentPage.setOnClickListener {
                 val item = orderList[adapterPosition]
                 val contextView: Context = view.context
                 val confirmPaymentPage = Intent(contextView, ConfirmOrderPaymentActivity::class.java)
+                confirmPaymentPage.putExtra("adminData", adminData)
                 confirmPaymentPage.putExtra("userID", item.user_id.toString())
                 confirmPaymentPage.putExtra("orderID", item.order_id.toString())
                 contextView.startActivity(confirmPaymentPage)

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "986217892210",
+    "project_id": "rollin-inthebeef-2973c",
+    "storage_bucket": "rollin-inthebeef-2973c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986217892210:android:95a6f7078dec651c87f5eb",
+        "android_client_info": {
+          "package_name": "com.example.rollinginthebeef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986217892210-6ks5fb3k24ffv9oah1lkg3urssbt4itp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTuDoUbRHY5_SIKkQ3PSGn62BZ0iZbNmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986217892210-6ks5fb3k24ffv9oah1lkg3urssbt4itp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986217892210:android:4af838dc73d7dc8987f5eb",
+        "android_client_info": {
+          "package_name": "com.myweb.rollinginthebeef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986217892210-6ks5fb3k24ffv9oah1lkg3urssbt4itp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTuDoUbRHY5_SIKkQ3PSGn62BZ0iZbNmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986217892210-6ks5fb3k24ffv9oah1lkg3urssbt4itp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

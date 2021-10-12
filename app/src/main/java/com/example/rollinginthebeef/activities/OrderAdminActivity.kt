@@ -55,7 +55,7 @@ class OrderAdminActivity : AppCompatActivity() {
             true
         }
 
-        binding.recyclerViewAdminOrder.adapter = OrderAdapter(this.orderList, applicationContext)
+        binding.recyclerViewAdminOrder.adapter = OrderAdapter(this.orderList, adminData, applicationContext)
         binding.recyclerViewAdminOrder.layoutManager = LinearLayoutManager(applicationContext)
     }
 
@@ -65,6 +65,8 @@ class OrderAdminActivity : AppCompatActivity() {
     }
 
     fun callOrderData(){
+        val data = intent.extras
+        val adminData: infoUserParcel? = data?.getParcelable("adminData")
         orderList.clear()
         val api: dataAPI = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3000/")
@@ -76,7 +78,7 @@ class OrderAdminActivity : AppCompatActivity() {
                 response.body()?.forEach {
                     orderList.add(Order(it.user_id, it.user_username, it.user_name, it.order_id, it.order_date, it.order_total, it.order_status))
                 }
-                binding.recyclerViewAdminOrder.adapter = OrderAdapter(orderList, applicationContext)
+                binding.recyclerViewAdminOrder.adapter = OrderAdapter(orderList, adminData, applicationContext)
             }
 
             override fun onFailure(call: Call<List<Order>>, t: Throwable) {
