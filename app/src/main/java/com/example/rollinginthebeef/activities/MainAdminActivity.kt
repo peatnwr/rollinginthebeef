@@ -3,6 +3,7 @@ package com.example.rollinginthebeef.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -26,6 +27,7 @@ class MainAdminActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainAdminBinding
     var productList = arrayListOf<Product>()
+    var searchList = arrayListOf<Product>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +58,7 @@ class MainAdminActivity : AppCompatActivity() {
             true
         }
 
-        binding.recyclerViewAdmin.adapter = ProductAdapter(this.productList, applicationContext)
+        binding.recyclerViewAdmin.adapter = ProductAdapter(this.searchList, applicationContext)
         binding.recyclerViewAdmin.layoutManager = LinearLayoutManager(applicationContext)
 
         binding.orderAdmin.setOnClickListener {
@@ -64,6 +66,44 @@ class MainAdminActivity : AppCompatActivity() {
             orderAdmin.putExtra("adminData", adminData)
             startActivity(orderAdmin)
         }
+
+        binding.SearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchList.clear()
+                val searchTx = query!!.toLowerCase(Locale.getDefault())
+                if(searchTx.isNotEmpty()){
+                    productList.forEach {
+                        if(it.product_name.toLowerCase(Locale.getDefault()).contains(searchTx) || it.category_name.toLowerCase(Locale.getDefault()).contains(searchTx)) {
+                            searchList.add(it)
+                        }
+                    }
+                    binding.recyclerViewAdmin.adapter!!.notifyDataSetChanged()
+                } else {
+                    searchList.clear()
+                    searchList.addAll(productList)
+                    binding.recyclerViewAdmin.adapter!!.notifyDataSetChanged()
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchList.clear()
+                val searchTx = newText!!.toLowerCase(Locale.getDefault())
+                if (searchTx.isNotEmpty()) {
+                    productList.forEach {
+                        if (it.product_name.toLowerCase(Locale.getDefault()).contains(searchTx) || it.category_name.toLowerCase(Locale.getDefault()).contains(searchTx)) {
+                            searchList.add(it)
+                        }
+                    }
+                    binding.recyclerViewAdmin.adapter!!.notifyDataSetChanged()
+                } else {
+                    searchList.clear()
+                    searchList.addAll(productList)
+                    binding.recyclerViewAdmin.adapter!!.notifyDataSetChanged()
+                }
+                return false
+            }
+        })
     }
 
     override fun onResume() {
@@ -84,7 +124,8 @@ class MainAdminActivity : AppCompatActivity() {
                     response.body()?.forEach {
                         productList.add(Product(it.product_id, it.product_name, it.product_price, it.product_detail, it.product_img, it.product_category, it.category_name))
                     }
-                    binding.recyclerViewAdmin.adapter = ProductAdapter(productList, applicationContext)
+                    searchList.addAll(productList)
+                    binding.recyclerViewAdmin.adapter = ProductAdapter(searchList, applicationContext)
                 }
 
                 override fun onFailure(call: Call<List<Product>>, t: Throwable) {
