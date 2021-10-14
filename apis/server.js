@@ -39,18 +39,34 @@ app.get('/addproductpage/', function(req, res) {
 });
 
 app.get('/orderdetail/:order_id/:user_id', function(req, res) {
-    let orderID = req.params.order_id
-    let userID = req.params.user_id
+    let orderID = req.params.order_id;
+    let userID = req.params.user_id;
 
     if(!orderID || !userID){
-        res.status(400).send({ error: true, message: "Please provide order id and user id" })
+        res.status(400).send({ error: true, message: "Please provide order id and user id" });
     }else{
         dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `user`.`user_name`, `user`.`user_address`, `orderdetail`.`orderdetail_qty`, `product`.`product_name`, `orderdetail`.`orderdetail_price`, `order`.`order_total`, `order`.`receipt_img` FROM `order`, `user`, `product`, `orderdetail` WHERE `order`.`order_id` = ? AND `orderdetail`.`order_id` = ? AND `user`.`user_id` = ? AND `orderdetail`.`product_id` = `product`.`product_id`;', [orderID, orderID, userID], function(error, results, fields) {
             if(error) throw error;
             return res.send(results)
-        })
+        });
     }
-})
+});
+
+app.post('/addproduct/', function(req, res) {
+    let data = req.body
+
+    let productName = data.product_name
+    let productPrice = data.product_price
+    let productDetail = data.product_detail
+    let productImg = data.product_img
+    let productQty = data.product_qty
+    let categoryId = data.category_id
+
+    dbConn.query('INSERT INTO `product`(`product_name`, `product_price`, `product_detail`, `product_img`, `product_qty`, `category_id`) VALUES (?, ?, ?, ?, ?, ?)', [productName, productPrice, productDetail, productImg, productQty, categoryId], function(error, results, fields) {
+        if(error) throw error;
+        return res.send(results);
+    });
+});
 
 app.patch('/confirmpayment/:order_id', function(req, res) {
     let orderID = req.params.order_id
