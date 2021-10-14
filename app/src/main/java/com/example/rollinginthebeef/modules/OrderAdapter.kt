@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rollinginthebeef.activities.ConfirmOrderPaymentActivity
-import com.example.rollinginthebeef.activities.DeliveryStatusAdminActivity
 import com.example.rollinginthebeef.databinding.OrderItemLayoutBinding
 import kotlin.collections.ArrayList
 

@@ -45,4 +45,9 @@ interface authenticationAPI {
         @Field("user_password") user_password: String,
         @Field("user_cfpassword") user_cfpassword: String
     ): Call<loginUser>
+
+    @DELETE("userpermission/{user_id}")
+    fun deletePermissionUser(
+        @Path("user_id") user_id: Int
+    ): Call<loginUser>
 }

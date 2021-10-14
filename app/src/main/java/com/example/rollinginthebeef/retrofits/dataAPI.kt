@@ -38,4 +38,7 @@ interface dataAPI {
         @Field("product_qty") product_qty: Int,
         @Field("category_id") category_id: Int
     ): Call<ProductList>
+
+    @GET("userpermission")
+    fun retrieveUser(): Call<List<UserPermission>>
 }

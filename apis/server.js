@@ -17,6 +17,26 @@ let dbConn = mysql.createConnection({
 
 dbConn.connect();
 
+app.get('/userpermission/', function(req, res) {
+    dbConn.query('SELECT * FROM `user` WHERE `user_type` != 0 ', function(error, results, fields) {
+        if(error) throw error;
+        return res.send(results);
+    });
+});
+
+app.delete('/userpermission/:user_id', function(req, res) {
+    let userId = req.params.user_id
+
+    if(!userId){
+        res.status(400).send({ error: true, message: "Please provide user id" })
+    } else {
+        dbConn.query('DELETE FROM `user` WHERE `user_id` = ?', userId, function(error, results, fields) {
+            if(error) throw error;
+            res.send(results);
+        });
+    }
+})
+
 app.get('/allproduct/', function(req, res) {
     dbConn.query('SELECT `product`.`product_id`, `product`.`product_name`, `product`.`product_price`, `product`.`product_detail`, `product`.`product_img`, `product`.`category_id`, `category`.`category_name` FROM product, category WHERE `product`.`category_id` = `category`.`category_id`', function(error, results, fields) {
         if(error) throw error;
