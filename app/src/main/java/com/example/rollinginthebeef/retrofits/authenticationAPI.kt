@@ -32,4 +32,17 @@ interface authenticationAPI {
         @Field("user_password") user_password: String,
         @Field("user_cfpassword") user_cfpassword: String
     ):Call<changePasswordUser>
+
+    @PATCH("editprofileadmin")
+    @FormUrlEncoded
+    fun editProfileAdmin(
+        @Field("user_id") user_id: Int,
+        @Field("user_name") user_name: String,
+        @Field("user_email") user_email: String,
+        @Field("user_tel") user_tel: String,
+        @Field("user_address") user_address: String,
+        @Field("user_username") user_username: String,
+        @Field("user_password") user_password: String,
+        @Field("user_cfpassword") user_cfpassword: String
+    ): Call<loginUser>
 }

@@ -5,9 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityEditProfileAdminBinding
 import com.example.rollinginthebeef.modules.infoUserParcel
+import com.example.rollinginthebeef.modules.loginUser
+import com.example.rollinginthebeef.retrofits.authenticationAPI
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class EditProfileAdminActivity : AppCompatActivity() {
 
@@ -41,23 +49,50 @@ class EditProfileAdminActivity : AppCompatActivity() {
     }
 
     fun confirmEditAdminProfile(v: View){
+        val data = intent.extras
+        val adminData: infoUserParcel? = data?.getParcelable("adminData")
+        val api: authenticationAPI = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:3000/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(authenticationAPI::class.java)
+        if(binding.edtNameEditAdmin.text.toString().trim().isNotEmpty() && binding.edtEmailEditAdmin.text.toString().trim().isNotEmpty() &&
+                binding.edtTelEditAdmin.text.toString().trim().isNotEmpty() && binding.edtAddressEditAdmin.text.toString().trim().isNotEmpty() &&
+                binding.edtUsernameEditAdmin.text.toString().trim().isNotEmpty() && binding.edtPasswordEditAdmin.text.toString().trim().isNotEmpty() &&
+                binding.edtCfPwEditAdmin.text.toString().trim().isNotEmpty()){
+            api.editProfileAdmin(
+                adminData?.userID.toString().toInt(),
+                binding.edtNameEditAdmin.text.toString(),
+                binding.edtEmailEditAdmin.text.toString(),
+                binding.edtTelEditAdmin.text.toString(),
+                binding.edtAddressEditAdmin.text.toString(),
+                binding.edtUsernameEditAdmin.text.toString(),
+                binding.edtPasswordEditAdmin.text.toString(),
+                binding.edtCfPwEditAdmin.text.toString()
+            ).enqueue(object : Callback<loginUser> {
+                override fun onResponse(call: Call<loginUser>, response: Response<loginUser>) {
+                    if(response.isSuccessful){
+                        val profileAdmin = Intent(this@EditProfileAdminActivity, ProfileAdminActivity::class.java)
+                        profileAdmin.putExtra("adminData", adminData)
+                        startActivity(profileAdmin)
+                    }
+                }
 
+                override fun onFailure(call: Call<loginUser>, t: Throwable) {
+                    return t.printStackTrace()
+                }
+            })
+        } else {
+            Toast.makeText(applicationContext, "Please complete information.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun backToProfileAdmin(v: View){
         val data = intent.extras
         val adminData: infoUserParcel? = data?.getParcelable("adminData")
 
-        val userID = adminData?.userID.toString().toInt()
-        val userName = adminData?.userName.toString()
-        val userTel = adminData?.userTel.toString()
-        val userAddress = adminData?.userAddress.toString()
-        val userEmail = adminData?.userEmail.toString()
-        val nameUser = adminData?.nameUser.toString()
-
         val profileAdmin = Intent(this, ProfileAdminActivity::class.java)
-        profileAdmin.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+        profileAdmin.putExtra("adminData", adminData)
         startActivity(profileAdmin)
     }
-
 }
