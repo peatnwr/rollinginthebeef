@@ -195,7 +195,7 @@
             android:layout_below="@+id/spinner"
             android:padding="10dp"
             android:autofillHints="select"
-            android:entries="@array/city_list"/>
+            android:entries="@array/category_name"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
