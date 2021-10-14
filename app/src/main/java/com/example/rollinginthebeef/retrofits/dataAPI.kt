@@ -41,4 +41,7 @@ interface dataAPI {
 
     @GET("userpermission")
     fun retrieveUser(): Call<List<UserPermission>>
+
+    @GET("customeraccounts")
+    fun retrieveCustomer(): Call<List<CustomerAccounts>>
 }

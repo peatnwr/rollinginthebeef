@@ -51,6 +51,11 @@ interface authenticationAPI {
         @Path("user_id") user_id: Int
     ): Call<loginUser>
 
+    @DELETE("customeraccounts/{user_id}")
+    fun deleteCustomer(
+        @Path("user_id") user_id: Int
+    ): Call<loginUser>
+
     @POST("addstaff")
     @FormUrlEncoded
     fun addStaff(
