@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Rollinginthebeef"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.AddStaffActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ProductAddAdminActivity"
             android:exported="true" />
         <activity

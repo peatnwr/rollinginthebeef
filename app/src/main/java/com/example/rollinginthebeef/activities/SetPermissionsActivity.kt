@@ -34,6 +34,12 @@ class SetPermissionsActivity : AppCompatActivity() {
             startActivity(profilePage)
         }
 
+        binding.btnToAddPermission.setOnClickListener {
+            val addPermissionPage = Intent(this@SetPermissionsActivity, AddStaffActivity::class.java)
+            addPermissionPage.putExtra("adminData", adminData)
+            startActivity(addPermissionPage)
+        }
+
         binding.recyclerViewPermissions.adapter = SetPermissionsAdapter(userPermission, adminData, applicationContext)
         binding.recyclerViewPermissions.layoutManager = LinearLayoutManager(applicationContext)
     }

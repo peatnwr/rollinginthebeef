@@ -50,4 +50,17 @@ interface authenticationAPI {
     fun deletePermissionUser(
         @Path("user_id") user_id: Int
     ): Call<loginUser>
+
+    @POST("addstaff")
+    @FormUrlEncoded
+    fun addStaff(
+        @Field("user_name") user_name: String,
+        @Field("user_email") user_email: String,
+        @Field("user_tel") user_tel: String,
+        @Field("user_address") user_address: String,
+        @Field("user_username") user_username: String,
+        @Field("user_type") user_type: Int,
+        @Field("user_password") user_password: String,
+        @Field("user_cfpassword") user_cfpassword: String
+    ): Call<loginUser>
 }

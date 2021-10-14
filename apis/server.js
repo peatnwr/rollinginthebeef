@@ -204,6 +204,36 @@ app.patch('/editprofileadmin/', function(req, res) {
     });
 });
 
+app.post('/addstaff/', function(req, res) {
+    let data = req.body;
+
+    let nameUser = data.user_name;
+    let userEmail = data.user_email;
+    let userTel = data.user_tel;
+    let userAddress = data.user_address;
+    let userUsername = data.user_username;
+    let userType = data.user_type;
+    let userPassword = data.user_password;
+    let userCfPassword = data.user_cfpassword;
+
+    if(userPassword == userCfPassword){
+        dbConn.query('SELECT * FROM `user` WHERE `user_username` = ?', userUsername, function(error, results, fields) {
+            if(error) throw error;
+            
+            if(results && results.length){
+                res.status(400).send({ error: true, message: "User already exist." })
+            }else{
+                dbConn.query('INSERT INTO `user`(`user_username`, `user_password`, `user_tel`, `user_address`, `user_email`, `user_name`, `user_type`) VALUES (?,?,?,?,?,?,?)', [userUsername, userPassword, userTel, userAddress, userEmail, nameUser, userType], function(error, results, fields) {
+                    if(error) throw error;
+                    res.send(results);
+                });
+            }
+        });
+    } else {
+        res.status(400).send({ error: true, message: "Password and Confirm Password does not match." })
+    }
+});
+
 app.post('/register/', function(req, res) {
     let data = req.body // GET POST params
 
@@ -219,7 +249,7 @@ app.post('/register/', function(req, res) {
             console.log('MySQL Error!!!', error);
         });
         if(results && results.length){
-            res.send('User already exist!!!');
+            res.status(400).send({ error: true, message: "User already exist." })
         } else {
             dbConn.query('INSERT INTO `user`(`user_username`, `user_password`, `user_tel`, `user_address`, `user_email`, `user_name`) VALUES (?,?,?,?,?,?)', [username_reg, password_reg, tel, address, email, name], function(error, results, fields) {
                 dbConn.on('error', function(error) {
