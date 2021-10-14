@@ -69,6 +69,8 @@ class ProfileAdminActivity : AppCompatActivity() {
     }
 
     fun showOptionAdminPage(v: View){
+        val data = intent.extras
+        val adminData: infoUserParcel? = data?.getParcelable("adminData")
         val popupMenu = PopupMenu(this, binding.btnOptionAdminPage)
         popupMenu.inflate(R.menu.menu_admin)
 
@@ -77,14 +79,17 @@ class ProfileAdminActivity : AppCompatActivity() {
             when(item!!.itemId){
                 R.id.menuSetPermission -> {
                     val setPermissionsPage = Intent(this, SetPermissionsActivity::class.java)
+                    setPermissionsPage.putExtra("adminData", adminData)
                     startActivity(setPermissionsPage)
                 }
                 R.id.menuCustomerAccount -> {
                     val customerAccountPage = Intent(this, CustomerAccountActivity::class.java)
+                    customerAccountPage.putExtra("adminData", adminData)
                     startActivity(customerAccountPage)
                 }
                 R.id.menuOrderHistory -> {
                     val orderHistoryPage = Intent(this, OrderHistoryActivity::class.java)
+                    orderHistoryPage.putExtra("adminData", adminData)
                     startActivity(orderHistoryPage)
                 }
             }
