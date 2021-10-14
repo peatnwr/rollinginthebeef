@@ -8,20 +8,23 @@
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/drawable/ic_back.xml" value="0.3828125" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/drawable/ic_grocery.xml" value="0.3828125" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/drawable/ic_home.xml" value="0.3828125" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_add_product_admin.xml" value="0.3625" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_confirm_order_payment.xml" value="0.20150273224043716" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_customer_account.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_delivery_status_admin.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_delivery_status_admin.xml" value="0.27355072463768115" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_edit_profile_admin.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_forget_password.xml" value="0.3596014492753623" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_login.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_main_admin.xml" value="0.2807971014492754" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_main_admin.xml" value="0.27355072463768115" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_order_admin.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_order_history.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_product_add_admin.xml" value="0.27355072463768115" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_profile_admin.xml" value="0.2606292517006803" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_register.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_set_permissions.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/add_product_item_layout.xml" value="0.27355072463768115" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/add_staff.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/buttom_nonstyle.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/cart.xml" value="0.23645833333333333" />

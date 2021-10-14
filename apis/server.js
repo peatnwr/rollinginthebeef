@@ -31,6 +31,13 @@ app.get('/order/', function(req, res) {
     });
 })
 
+app.get('/addproductpage/', function(req, res) {
+    dbConn.query('SELECT `product`.`product_name`, `product`.`product_price`, `product`.`product_img`, `product`.`product_qty`, `category`.`category_name` FROM product, category WHERE `product`.`category_id` = `category`.`category_id`', function(error, results, fields) {
+        if(error) throw error;
+        return res.send(results)
+    });
+});
+
 app.get('/orderdetail/:order_id/:user_id', function(req, res) {
     let orderID = req.params.order_id
     let userID = req.params.user_id
@@ -119,6 +126,44 @@ app.patch('/changepassword/', function(req, res) {
             }
         } else {
             res.send("User not exist!!!");
+        }
+    });
+});
+
+app.patch('/editprofileadmin/', function(req, res) {
+    let data = req.body;
+
+    let userID = data.user_id;
+    let nameUser = data.user_name;
+    let userEmail = data.user_email;
+    let userTel = data.user_tel;
+    let userAddress = data.user_address;
+    let userUsername = data.user_username;
+    let userPassword = data.user_password;
+    let userCfPassword = data.user_cfpassword;
+    let cfPassword = false
+
+    if(userPassword == userCfPassword){
+        cfPassword = true ;
+    } else {
+        cfPassword = false ;
+    }
+
+    dbConn.query('SELECT * FROM `user` WHERE `user_id` = ?', userID, function(error, results, fields) {
+        if(error) throw error;
+
+        if(results && results.length){
+            if(cfPassword == true){
+                dbConn.query('UPDATE `user` SET `user_username` = ?, `user_password` = ?, `user_tel` = ?, `user_address` = ?, `user_email` = ?, `user_name` = ? WHERE `user_id` = ?', [userUsername, userPassword, userTel, userAddress, userEmail, nameUser, userID], function(error, results, fields) {
+                    if(error) throw error;
+
+                    res.send(results);
+                })
+            } else {
+                res.status(400).send({ error: true, message: "Password does not match." })
+            }
+        } else {
+            res.status(400).send({ error: true, message: "User not exist." })
         }
     });
 });
