@@ -45,6 +45,9 @@ class OrderAdminActivity : AppCompatActivity() {
                     startActivity(deliveryStatusAdminPage)
                 }
                 R.id.miAddProduct -> {
+                    val addProductAdminPage = Intent(this@OrderAdminActivity, AddProductAdminActivity::class.java)
+                    addProductAdminPage.putExtra("adminData", adminData)
+                    startActivity(addProductAdminPage)
                 }
                 R.id.miUserAdmin -> {
                     val profileAdminPage = Intent(this@OrderAdminActivity, ProfileAdminActivity::class.java)

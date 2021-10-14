@@ -39,6 +39,9 @@ class ProfileAdminActivity : AppCompatActivity() {
                     startActivity(deliveryStatusAdminPage)
                 }
                 R.id.miAddProduct -> {
+                    val addProductAdminPage = Intent(this@ProfileAdminActivity, AddProductAdminActivity::class.java)
+                    addProductAdminPage.putExtra("adminData", adminData)
+                    startActivity(addProductAdminPage)
                 }
             }
             true
