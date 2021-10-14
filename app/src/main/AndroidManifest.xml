@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Rollinginthebeef"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ProductAddAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AddProductAdminActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.ConfirmOrderPaymentActivity"
             android:exported="true" />
         <activity

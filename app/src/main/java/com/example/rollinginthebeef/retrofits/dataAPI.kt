@@ -1,9 +1,6 @@
 package com.example.rollinginthebeef.retrofits
 
-import com.example.rollinginthebeef.modules.DeliveryStatus
-import com.example.rollinginthebeef.modules.Order
-import com.example.rollinginthebeef.modules.OrderDetail
-import com.example.rollinginthebeef.modules.Product
+import com.example.rollinginthebeef.modules.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.PATCH
@@ -29,4 +26,7 @@ interface dataAPI {
 
     @GET("deliverystatus")
     fun retrieveStatusDelivery(): Call<List<DeliveryStatus>>
+
+    @GET("addproductpage")
+    fun retrieveAddProduct(): Call<List<AddProduct>>
 }
