@@ -1,17 +1,13 @@
 <resources>
     <string name="app_name">project</string>
 
-    <string-array name="city_list">
-        <item>Bangkok</item>
-        <item>London</item>
-        <item>Paris</item>
-        <item>Singapore</item>
-        <item>New York</item>
-        <item>Istanbul</item>
-        <item>Dubai</item>
-        <item>Kuala Lumpur</item>
-        <item>Hong Kong</item>
-        <item>Barcelona</item>
+    <string-array name="category_name">
+        <item>Argentina Beef</item>
+        <item>Argentina Tenderloin</item>
+        <item>Australia Beef</item>
+        <item>Japan Beef</item>
+        <item>US Beef</item>
+        <item>Wagyu Australia</item>
     </string-array>
 
 </resources>
