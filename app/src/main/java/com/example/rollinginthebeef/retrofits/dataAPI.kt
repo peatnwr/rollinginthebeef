@@ -67,6 +67,7 @@ interface dataAPI {
     @FormUrlEncoded
     fun updateDeliveryStatus(
         @Path("order_id") order_id: String,
+        @Field("delivery_status") delivery_status: Int?,
         @Field("order_received_time") order_received_time: String
     ): Call<DeliveryStatusUpdate>
 }

@@ -32,18 +32,21 @@ class DeliveryStatusRiderAdapter(val deliveryStatusList: ArrayList<DeliveryStatu
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         var dateMessage = ""
-        var statusMessage = ""
+        var trackingMessage = ""
+
+        if(deliveryStatusList!![position].order_tracking.toString().equals("1")){
+            trackingMessage = "Waiting for Transportation"
+        }else if(deliveryStatusList!![position].order_tracking.toString().equals("2")){
+            trackingMessage = "Shiping"
+        }
 
         deliveryStatusList?.forEach{
             if(it.order_date != null){ dateMessage = dateFormatter(it.order_date) }
-            when(it.order_status.toString()){
-                "3" -> { statusMessage = "Waiting for Transportation" }
-            }
         }
 
         binding.txOrderID.text = "Order ID : " + deliveryStatusList!![position].order_id
         binding.txCustomer.text = "Customer : " + deliveryStatusList!![position].user_name
-        binding.txOrderStatus.text = "Status : $statusMessage"
+        binding.txOrderStatus.text = "Status : $trackingMessage"
         binding.txAddress.text = "Address : " + deliveryStatusList!![position].user_address
         binding.txDate.text = "Order Date : $dateMessage"
         binding.txPrice.text = "Total : " + deliveryStatusList!![position].order_total.toString() + " ฿"

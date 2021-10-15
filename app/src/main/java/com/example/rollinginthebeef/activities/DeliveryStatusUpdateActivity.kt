@@ -3,7 +3,6 @@ package com.example.rollinginthebeef.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -19,7 +18,6 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 class DeliveryStatusUpdateActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -104,6 +102,15 @@ class DeliveryStatusUpdateActivity : AppCompatActivity(), AdapterView.OnItemSele
         val data = intent.extras
         val riderData: infoUserParcel? = data?.getParcelable("riderData")
         val orderId = intent.getStringExtra("orderId")
+        var statusDelivery : Int? = 0
+
+        deliveryStatus?.forEach {
+            when(deliveryStatus){
+                "Shiping" -> { statusDelivery = 2 }
+                "Successful" -> { statusDelivery = 3 }
+            }
+        }
+
         val sdf = SimpleDateFormat("yyyy-M-dd hh:mm:ss")
         val currentDate = sdf.format(Date())
         val api: dataAPI = Retrofit.Builder()
@@ -111,25 +118,22 @@ class DeliveryStatusUpdateActivity : AppCompatActivity(), AdapterView.OnItemSele
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(dataAPI::class.java)
-        if(deliveryStatus.equals("Successful")){
-            api.updateDeliveryStatus(
-                orderId.toString(),
-                currentDate
-            ).enqueue(object : Callback<DeliveryStatusUpdate> {
-                override fun onResponse(call: Call<DeliveryStatusUpdate>, response: Response<DeliveryStatusUpdate>) {
-                    if(response.isSuccessful){
-                        val mainRider = Intent(this@DeliveryStatusUpdateActivity, MainRiderActivity::class.java)
-                        mainRider.putExtra("riderData", riderData)
-                        startActivity(mainRider)
-                    }
+        api.updateDeliveryStatus(
+            orderId.toString(),
+            statusDelivery,
+            currentDate
+        ).enqueue(object : Callback<DeliveryStatusUpdate> {
+            override fun onResponse(call: Call<DeliveryStatusUpdate>, response: Response<DeliveryStatusUpdate>) {
+                if(response.isSuccessful){
+                    val mainRider = Intent(this@DeliveryStatusUpdateActivity, MainRiderActivity::class.java)
+                    mainRider.putExtra("riderData", riderData)
+                    startActivity(mainRider)
                 }
+            }
 
-                override fun onFailure(call: Call<DeliveryStatusUpdate>, t: Throwable) {
-                    return t.printStackTrace()
-                }
-            })
-        } else {
-            Toast.makeText(applicationContext, "Please select status to successful", Toast.LENGTH_SHORT).show()
-        }
+            override fun onFailure(call: Call<DeliveryStatusUpdate>, t: Throwable) {
+                return t.printStackTrace()
+            }
+        })
     }
 }

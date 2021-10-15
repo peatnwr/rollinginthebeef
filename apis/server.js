@@ -58,14 +58,14 @@ app.delete('/customeraccounts/:user_id', function(req, res) {
 });
 
 app.get('/orderhistoryadmin/', function(req, res) {
-    dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `user`.`user_id`, `user`.`user_name` FROM `order`, `user` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 4 AND `order`.`order_tracking` = 2', function(error, results, fields) {
+    dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `user`.`user_id`, `user`.`user_name` FROM `order`, `user` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 4 AND `order`.`order_tracking` = 3', function(error, results, fields) {
         if(error) throw error;
         return res.send(results)
     });
 })
 
 app.get('/orderhistoryrider/', function(req, res) {
-    dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `user`.`user_id`, `user`.`user_name` FROM `order`, `user` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 4 AND `order`.`order_tracking` = 2', function(error, results, fields) {
+    dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `user`.`user_id`, `user`.`user_name` FROM `order`, `user` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 4 AND `order`.`order_tracking` = 3', function(error, results, fields) {
         if(error) throw error;
         return res.send(results)
     });
@@ -164,7 +164,7 @@ app.patch('/confirmpayment/:order_id', function(req, res) {
 });
 
 app.get('/deliverystatus/', function(req, res) {
-    dbConn.query('SELECT `user`.`user_id`, `user`.`user_name`, `user`.`user_address`, `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `order`.`order_status` FROM `user`, `order` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 3 AND `order`.`order_tracking` = 1', function(error, results, fields) {
+    dbConn.query('SELECT `user`.`user_id`, `user`.`user_name`, `user`.`user_address`, `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `order`.`order_status`, `order`.`order_tracking` FROM `user`, `order` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 3 AND `order`.`order_tracking` != 0', function(error, results, fields) {
         if(error) throw error;
         return res.send(results);
     });
@@ -172,15 +172,25 @@ app.get('/deliverystatus/', function(req, res) {
 
 app.patch('/updatestatusdelivery/:order_id', function(req, res) {
     let orderId = req.params.order_id
+    let statusDelivery = req.body.delivery_status
     let receivedTime = req.body.order_received_time
 
     if(!orderId){
         res.status(400).send({ error: true, message: "Please provide order id" })
     } else {
-        dbConn.query('UPDATE `order` SET `order_received_time` = ?, `order_status` = 4, `order_tracking` = 2 WHERE `order`.`order_id` = ?', [receivedTime, orderId], function(error, results, fields) {
-            if(error) throw error;
-            return res.send(results);
-        })
+        if(statusDelivery == 2){
+            dbConn.query('UPDATE `order` SET `order_received_time` = ?, `order_status` = 3, `order_tracking` = ? WHERE `order`.`order_id` = ?', [receivedTime, statusDelivery, orderId], function(error, results, fields) {
+                if(error) throw error;
+                return res.send(results);
+            })
+        } else if(statusDelivery == 3) {
+            dbConn.query('UPDATE `order` SET `order_received_time` = ?, `order_status` = 4, `order_tracking` = ? WHERE `order`.`order_id` = ?', [receivedTime, statusDelivery, orderId], function(error, results, fields) {
+                if(error) throw error;
+                return res.send(results);
+            })
+        } else {
+            res.status(400).send({ error: true, message: "statusDelivery wrong." })
+        }
     }
 });
 

@@ -20,11 +20,14 @@ class DeliveryStatusAdapter(val deliveryStatusList: ArrayList<DeliveryStatus>, v
         var dateMessage = ""
         var statusMessage = ""
 
+        if(deliveryStatusList!![position].order_tracking.toString().equals("1")){
+            statusMessage = "Waiting for Transportation"
+        }else if(deliveryStatusList!![position].order_tracking.toString().equals("2")){
+            statusMessage = "Shiping"
+        }
+
         deliveryStatusList?.forEach{
             if(it.order_date != null){ dateMessage = dateFormatter(it.order_date) }
-            when(it.order_status.toString()){
-                "3" -> { statusMessage = "Waiting for Transportation" }
-            }
         }
 
         binding.txOrderID.text = "Order ID : " + deliveryStatusList!![position].order_id

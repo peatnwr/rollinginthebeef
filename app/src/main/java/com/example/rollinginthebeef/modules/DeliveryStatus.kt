@@ -23,4 +23,7 @@ class DeliveryStatus(
     @SerializedName("order_total") val order_total: Int,
 
     @Expose
-    @SerializedName("order_status") val order_status: Int) {}
+    @SerializedName("order_status") val order_status: Int,
+
+    @Expose
+    @SerializedName("order_tracking") val order_tracking: Int) {}

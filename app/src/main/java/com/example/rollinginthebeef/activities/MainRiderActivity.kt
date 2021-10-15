@@ -3,6 +3,7 @@ package com.example.rollinginthebeef.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityMainRiderBinding
@@ -64,7 +65,7 @@ class MainRiderActivity : AppCompatActivity() {
         api.retrieveStatusDelivery().enqueue(object : Callback<List<DeliveryStatus>> {
             override fun onResponse(call: Call<List<DeliveryStatus>>, response: Response<List<DeliveryStatus>>) {
                 response.body()?.forEach {
-                    deliveryStatusList.add(DeliveryStatus(it.user_id, it.user_name, it.user_address, it.order_id, it.order_date, it.order_total, it.order_status))
+                    deliveryStatusList.add(DeliveryStatus(it.user_id, it.user_name, it.user_address, it.order_id, it.order_date, it.order_total, it.order_status, it.order_tracking))
                 }
                 binding.recyclerViewDeliveryStatus.adapter = DeliveryStatusRiderAdapter(deliveryStatusList, riderData, applicationContext)
             }
