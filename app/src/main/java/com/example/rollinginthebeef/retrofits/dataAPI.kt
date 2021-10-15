@@ -44,4 +44,13 @@ interface dataAPI {
 
     @GET("customeraccounts")
     fun retrieveCustomer(): Call<List<CustomerAccounts>>
+
+    @GET("orderhistoryadmin")
+    fun retrieveOrderHistory(): Call<List<OrderHistoryAdmin>>
+
+    @GET("orderhistorydetail/{order_id}/{user_id}")
+    fun retrieveOrderHistoryDetail(
+        @Path("order_id") order_id: String,
+        @Path("user_id") user_id: String
+    ): Call<List<OrderHistoryDetail>>
 }

@@ -57,6 +57,13 @@ app.delete('/customeraccounts/:user_id', function(req, res) {
     }
 });
 
+app.get('/orderhistoryadmin/', function(req, res) {
+    dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `user`.`user_id`, `user`.`user_name` FROM `order`, `user` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 4 AND `order`.`order_tracking` = 2', function(error, results, fields) {
+        if(error) throw error;
+        return res.send(results)
+    });
+})
+
 app.get('/allproduct/', function(req, res) {
     dbConn.query('SELECT `product`.`product_id`, `product`.`product_name`, `product`.`product_price`, `product`.`product_detail`, `product`.`product_img`, `product`.`category_id`, `category`.`category_name` FROM product, category WHERE `product`.`category_id` = `category`.`category_id`', function(error, results, fields) {
         if(error) throw error;
@@ -82,12 +89,26 @@ app.get('/orderdetail/:order_id/:user_id', function(req, res) {
     let orderID = req.params.order_id;
     let userID = req.params.user_id;
 
-    if(!orderID || !userID){
+    if(!orderID && !userID){
         res.status(400).send({ error: true, message: "Please provide order id and user id" });
     }else{
         dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `user`.`user_name`, `user`.`user_address`, `orderdetail`.`orderdetail_qty`, `product`.`product_name`, `orderdetail`.`orderdetail_price`, `order`.`order_total`, `order`.`receipt_img` FROM `order`, `user`, `product`, `orderdetail` WHERE `order`.`order_id` = ? AND `orderdetail`.`order_id` = ? AND `user`.`user_id` = ? AND `orderdetail`.`product_id` = `product`.`product_id`;', [orderID, orderID, userID], function(error, results, fields) {
             if(error) throw error;
-            return res.send(results)
+            return res.send(results);
+        });
+    }
+});
+
+app.get('/orderhistorydetail/:order_id/:user_id', function(req, res) {
+    let orderId = req.params.order_id
+    let userId = req.params.user_id
+
+    if(!orderId && !userId){
+        res.status(400).send({ error: true, message: "Please provide order id and user id" });
+    }else{
+        dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `user`.`user_name`, `user`.`user_address`, `orderdetail`.`orderdetail_qty`, `product`.`product_name`, `orderdetail`.`orderdetail_price`, `order`.`order_total`, `order`.`order_received_time`, `order`.`receipt_img` FROM `order`, `user`, `product`, `orderdetail` WHERE `order`.`order_id` = ? AND `orderdetail`.`order_id` = ? AND `user`.`user_id` = ? AND `orderdetail`.`product_id` = `product`.`product_id`;', [orderId, orderId, userId], function(error, results, fields) {
+            if(error) throw error;
+            return res.send(results);
         });
     }
 });
