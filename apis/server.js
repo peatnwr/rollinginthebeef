@@ -120,6 +120,20 @@ app.get('/orderhistorydetail/:order_id/:user_id', function(req, res) {
     }
 });
 
+app.get('/deliveryinfo/:order_id/:user_id', function(req, res) {
+    let orderId = req.params.order_id
+    let userId = req.params.user_id
+
+    if(!orderId && !userId){
+        res.status(400).send({ error: true, message: "Please provide order id and user id" });
+    } else {
+        dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `user`.`user_name`, `user`.`user_address`, `orderdetail`.`orderdetail_qty`, `product`.`product_name`, `orderdetail`.`orderdetail_price`, `order`.`order_total`, `order`.`order_status`, `order`.`order_tracking` FROM `order`, `user`, `orderdetail`, `product` WHERE `order`.`order_id` = ? AND `orderdetail`.`order_id` = ? AND `user`.`user_id` = ? AND `orderdetail`.`product_id` = `product`.`product_id`;', [orderId, orderId, userId], function(error, results, fields) {
+            if(error) throw error;
+            return res.send(results);
+        })
+    }
+})
+
 app.post('/addproduct/', function(req, res) {
     let data = req.body
 
@@ -154,6 +168,20 @@ app.get('/deliverystatus/', function(req, res) {
         if(error) throw error;
         return res.send(results);
     });
+});
+
+app.patch('/updatestatusdelivery/:order_id', function(req, res) {
+    let orderId = req.params.order_id
+    let receivedTime = req.body.order_received_time
+
+    if(!orderId){
+        res.status(400).send({ error: true, message: "Please provide order id" })
+    } else {
+        dbConn.query('UPDATE `order` SET `order_received_time` = ?, `order_status` = 4, `order_tracking` = 2 WHERE `order`.`order_id` = ?', [receivedTime, orderId], function(error, results, fields) {
+            if(error) throw error;
+            return res.send(results);
+        })
+    }
 });
 
 app.post('/login/', function(req, res) {

@@ -13,6 +13,7 @@
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_confirm_order_payment.xml" value="0.20150273224043716" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_customer_account.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_delivery_status_admin.xml" value="0.27355072463768115" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_delivery_status_update.xml" value="0.21004098360655737" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_edit_profile_admin.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/activity_forget_password.xml" value="0.3596014492753623" />
@@ -42,6 +43,7 @@
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/delivery_status.xml" value="0.25" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/delivery_status_admin.xml" value="0.2776268115942029" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/delivery_status_item_layout.xml" value="0.2776268115942029" />
+        <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/delivery_status_rider_item_layout.xml" value="0.27853260869565216" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/delivery_status_update.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/nawar/AndroidStudioProjects/rollinginthebeef/app/src/main/res/layout/edit_product.xml" value="0.36666666666666664" />

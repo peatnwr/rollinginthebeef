@@ -51,9 +51,22 @@ interface dataAPI {
     @GET("orderhistoryrider")
     fun retrieveOrderHistoryRider(): Call<List<OrderHistoryRider>>
 
+    @GET("deliveryinfo/{order_id}/{user_id}")
+    fun retrieveDeliveryInfo(
+        @Path("order_id") order_id: String,
+        @Path("user_id") user_id: String
+    ): Call<List<DeliveryStatusUpdate>>
+
     @GET("orderhistorydetail/{order_id}/{user_id}")
     fun retrieveOrderHistoryDetail(
         @Path("order_id") order_id: String,
         @Path("user_id") user_id: String
     ): Call<List<OrderHistoryDetail>>
+
+    @PATCH("updatestatusdelivery/{order_id}")
+    @FormUrlEncoded
+    fun updateDeliveryStatus(
+        @Path("order_id") order_id: String,
+        @Field("order_received_time") order_received_time: String
+    ): Call<DeliveryStatusUpdate>
 }

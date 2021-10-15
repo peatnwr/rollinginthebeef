@@ -15,4 +15,9 @@
         <item>Delivery Man</item>
     </string-array>
 
+    <string-array name="delivery_status">
+        <item>Shiping</item>
+        <item>Successful</item>
+    </string-array>
+
 </resources>

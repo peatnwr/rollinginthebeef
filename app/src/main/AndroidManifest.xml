@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Rollinginthebeef"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.DeliveryStatusUpdateActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.OrderHistoryDetailRiderActivity"
             android:exported="false" />
         <activity
