@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                         "2" -> {
                             val mainRider = Intent(this@LoginActivity, MainRiderActivity::class.java)
-                            mainRider.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+                            mainRider.putExtra("riderData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
                             startActivity(mainRider)
                         }
                     }
