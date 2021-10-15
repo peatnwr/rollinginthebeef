@@ -64,6 +64,13 @@ app.get('/orderhistoryadmin/', function(req, res) {
     });
 })
 
+app.get('/orderhistoryrider/', function(req, res) {
+    dbConn.query('SELECT `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `user`.`user_id`, `user`.`user_name` FROM `order`, `user` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 4 AND `order`.`order_tracking` = 2', function(error, results, fields) {
+        if(error) throw error;
+        return res.send(results)
+    });
+})
+
 app.get('/allproduct/', function(req, res) {
     dbConn.query('SELECT `product`.`product_id`, `product`.`product_name`, `product`.`product_price`, `product`.`product_detail`, `product`.`product_img`, `product`.`category_id`, `category`.`category_name` FROM product, category WHERE `product`.`category_id` = `category`.`category_id`', function(error, results, fields) {
         if(error) throw error;

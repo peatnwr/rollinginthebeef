@@ -48,6 +48,9 @@ interface dataAPI {
     @GET("orderhistoryadmin")
     fun retrieveOrderHistory(): Call<List<OrderHistoryAdmin>>
 
+    @GET("orderhistoryrider")
+    fun retrieveOrderHistoryRider(): Call<List<OrderHistoryRider>>
+
     @GET("orderhistorydetail/{order_id}/{user_id}")
     fun retrieveOrderHistoryDetail(
         @Path("order_id") order_id: String,
