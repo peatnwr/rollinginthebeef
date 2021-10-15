@@ -88,7 +88,7 @@ class ProfileAdminActivity : AppCompatActivity() {
                     startActivity(customerAccountPage)
                 }
                 R.id.menuOrderHistory -> {
-                    val orderHistoryPage = Intent(this, OrderHistoryActivity::class.java)
+                    val orderHistoryPage = Intent(this, OrderHistoryAdminActivity::class.java)
                     orderHistoryPage.putExtra("adminData", adminData)
                     startActivity(orderHistoryPage)
                 }
