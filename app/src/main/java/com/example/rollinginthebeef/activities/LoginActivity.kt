@@ -14,6 +14,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.math.BigInteger
+import java.security.MessageDigest
 
 class LoginActivity : AppCompatActivity() {
 
@@ -34,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
             .create(authenticationAPI::class.java)
         api.loginUser(
             binding.edtUsername.text.toString(),
-            binding.edtPassword.text.toString()
+            md5(binding.edtPassword.text.toString())
         ).enqueue(object : Callback<loginUser> {
             override fun onResponse(call: Call<loginUser>, response: Response<loginUser>) {
                 if(response.isSuccessful){
@@ -55,6 +57,11 @@ class LoginActivity : AppCompatActivity() {
                             mainAdmin.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
                             startActivity(mainAdmin)
                         }
+                        "2" -> {
+                            val mainRider = Intent(this@LoginActivity, MainRiderActivity::class.java)
+                            mainRider.putExtra("adminData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+                            startActivity(mainRider)
+                        }
                     }
                 } else {
                     Toast.makeText(applicationContext, "Username or password are incorrect!", Toast.LENGTH_SHORT).show()
@@ -67,14 +74,23 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
+    fun md5(input: String) : String {
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
+    }
+
     fun forgetPasswordPage(v: View){
         val forgetpwPage = Intent(this, ForgetPasswordActivity::class.java)
+        forgetpwPage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(forgetpwPage)
+        finish()
     }
 
     fun registerPage(v: View){
         val regPage = Intent(this, RegisterActivity::class.java)
+        regPage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(regPage)
+        finish()
     }
 
 }
