@@ -16,6 +16,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.math.BigInteger
+import java.security.MessageDigest
 
 class EditProfileAdminActivity : AppCompatActivity() {
 
@@ -67,8 +69,8 @@ class EditProfileAdminActivity : AppCompatActivity() {
                 binding.edtTelEditAdmin.text.toString(),
                 binding.edtAddressEditAdmin.text.toString(),
                 binding.edtUsernameEditAdmin.text.toString(),
-                binding.edtPasswordEditAdmin.text.toString(),
-                binding.edtCfPwEditAdmin.text.toString()
+                md5(binding.edtPasswordEditAdmin.text.toString()),
+                md5(binding.edtCfPwEditAdmin.text.toString())
             ).enqueue(object : Callback<loginUser> {
                 override fun onResponse(call: Call<loginUser>, response: Response<loginUser>) {
                     if(response.isSuccessful){
@@ -85,6 +87,11 @@ class EditProfileAdminActivity : AppCompatActivity() {
         } else {
             Toast.makeText(applicationContext, "Please complete information.", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun md5(input: String) : String {
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
     }
 
     fun backToProfileAdmin(v: View){
