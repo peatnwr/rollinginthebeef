@@ -74,9 +74,11 @@ class EditProfileAdminActivity : AppCompatActivity() {
             ).enqueue(object : Callback<loginUser> {
                 override fun onResponse(call: Call<loginUser>, response: Response<loginUser>) {
                     if(response.isSuccessful){
-                        val profileAdmin = Intent(this@EditProfileAdminActivity, ProfileAdminActivity::class.java)
-                        profileAdmin.putExtra("adminData", adminData)
-                        startActivity(profileAdmin)
+                        Toast.makeText(applicationContext, "Edited information Successful", Toast.LENGTH_SHORT).show()
+                        val loginPage = Intent(this@EditProfileAdminActivity, LoginActivity::class.java)
+                        loginPage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(loginPage)
+                        finish()
                     }
                 }
 
