@@ -73,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:text="Oh Au"
+                android:textColor="@color/black"
                 android:background="@drawable/edittext_stype"
                 android:textSize="18sp" />
 
@@ -97,6 +98,7 @@
                 android:inputType="textEmailAddress"
                 android:background="@drawable/edittext_stype"
                 android:text="Oh_au@gmail.com"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -119,6 +121,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:text="062-222-2222"
+                android:textColor="@color/black"
                 android:background="@drawable/edittext_stype"
                 android:textSize="18sp" />
 
@@ -142,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textLongMessage"
                 android:text="Fortune place"
+                android:textColor="@color/black"
                 android:background="@drawable/edittext_stype"
                 android:textSize="18sp" />
 
@@ -165,6 +169,7 @@
                 android:inputType="textShortMessage"
                 android:background="@drawable/edittext_stype"
                 android:text="Admin"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -186,6 +191,7 @@
                 android:inputType="textShortMessage"
                 android:background="@drawable/edittext_stype"
                 android:text="Delivery Man"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
