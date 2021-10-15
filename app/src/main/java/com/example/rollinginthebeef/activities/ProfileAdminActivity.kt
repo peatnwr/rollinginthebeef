@@ -65,6 +65,11 @@ class ProfileAdminActivity : AppCompatActivity() {
         edtTelText.setText(adminData?.userTel)
         edtAddressText.setText(adminData?.userAddress)
         edtUsernameText.setText(adminData?.userName)
+        edtNameText.isEnabled = false
+        edtEmailText.isEnabled = false
+        edtTelText.isEnabled = false
+        edtAddressText.isEnabled = false
+        edtUsernameText.isEnabled = false
 
     }
 
