@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rollinginthebeef.databinding.ActivitySetPermissionsBinding
-import com.example.rollinginthebeef.modules.SetPermissionsAdapter
-import com.example.rollinginthebeef.modules.infoUserParcel
-import com.example.rollinginthebeef.modules.UserPermission
+import com.example.rollinginthebeef.adapter.SetPermissionsAdapter
+import com.example.rollinginthebeef.dataclass.infoUserParcel
+import com.example.rollinginthebeef.dataclass.UserPermission
 import com.example.rollinginthebeef.retrofits.dataAPI
 import retrofit2.Call
 import retrofit2.Callback

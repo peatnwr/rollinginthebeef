@@ -3,14 +3,12 @@ package com.example.rollinginthebeef.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityMainRiderBinding
-import com.example.rollinginthebeef.modules.DeliveryStatus
-import com.example.rollinginthebeef.modules.DeliveryStatusAdapter
-import com.example.rollinginthebeef.modules.DeliveryStatusRiderAdapter
-import com.example.rollinginthebeef.modules.infoUserParcel
+import com.example.rollinginthebeef.dataclass.DeliveryStatus
+import com.example.rollinginthebeef.adapter.DeliveryStatusRiderAdapter
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.retrofits.dataAPI
 import retrofit2.Call
 import retrofit2.Callback

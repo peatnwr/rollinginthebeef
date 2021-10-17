@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="#F1F1F1">
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_back"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+        <ImageView
+            android:id="@+id/imge_profile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_user"
+            />
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:text="AuInwza"
+            android:layout_toRightOf="@id/imge_profile"/>
+        <TextView
+            android:id="@+id/text_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_below="@id/text_name"
+            android:layout_toRightOf="@id/imge_profile"
+            android:text="Edit Proflie"/>
+        <ImageButton
+            android:id="@+id/editProfile"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_edit"
+            android:layout_below="@id/text_name"
+            android:layout_toRightOf="@id/text_edit"/>
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/sub_edittext">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Name :"
+            android:layout_marginRight="32dp"/>
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text="Oh Au"
+            android:background="@drawable/edittext_stype"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/sub_edittext">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Email :"
+            android:layout_marginRight="37dp"/>
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/edittext_stype"
+            android:text="Oh_au@gmail.com"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/sub_edittext">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Tel :"
+            android:layout_marginRight="58dp"/>
+        <EditText
+            android:id="@+id/edtTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:text="062-222-2222"
+            android:background="@drawable/edittext_stype"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/sub_edittext">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Address :"
+            android:layout_marginRight="15dp"/>
+        <EditText
+            android:id="@+id/edtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textLongMessage"
+            android:text="Fortune place"
+            android:background="@drawable/edittext_stype"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/sub_edittext">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Username :"/>
+        <EditText
+            android:id="@+id/edtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textShortMessage"
+            android:background="@drawable/edittext_stype"
+            android:text="Aulnwza"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LogOut"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:background="@drawable/buttom_stype"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#757575"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+</LinearLayout>

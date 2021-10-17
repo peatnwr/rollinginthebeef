@@ -6,9 +6,9 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityDeliveryStatusAdminBinding
-import com.example.rollinginthebeef.modules.DeliveryStatus
-import com.example.rollinginthebeef.modules.DeliveryStatusAdapter
-import com.example.rollinginthebeef.modules.infoUserParcel
+import com.example.rollinginthebeef.dataclass.DeliveryStatus
+import com.example.rollinginthebeef.adapter.DeliveryStatusAdapter
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.retrofits.dataAPI
 import retrofit2.Call
 import retrofit2.Callback

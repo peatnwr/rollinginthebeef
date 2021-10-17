@@ -4,12 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rollinginthebeef.R
-import com.example.rollinginthebeef.databinding.ActivityOrderAdminBinding
 import com.example.rollinginthebeef.databinding.ActivityOrderHistoryAdminBinding
-import com.example.rollinginthebeef.modules.OrderHistoryAdmin
-import com.example.rollinginthebeef.modules.OrderHistoryAdminAdapter
-import com.example.rollinginthebeef.modules.infoUserParcel
+import com.example.rollinginthebeef.dataclass.OrderHistoryAdmin
+import com.example.rollinginthebeef.adapter.OrderHistoryAdminAdapter
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.retrofits.dataAPI
 import retrofit2.Call
 import retrofit2.Callback

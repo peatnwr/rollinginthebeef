@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rollinginthebeef.R
+import com.example.rollinginthebeef.adapter.ProductDeliveryInfoAdapter
 import com.example.rollinginthebeef.databinding.ActivityDeliveryStatusUpdateBinding
+import com.example.rollinginthebeef.dataclass.DeliveryStatusUpdate
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.modules.*
 import com.example.rollinginthebeef.retrofits.dataAPI
 import retrofit2.Call

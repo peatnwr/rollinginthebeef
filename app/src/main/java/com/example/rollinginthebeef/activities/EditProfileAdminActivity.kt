@@ -8,8 +8,8 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityEditProfileAdminBinding
-import com.example.rollinginthebeef.modules.infoUserParcel
-import com.example.rollinginthebeef.modules.loginUser
+import com.example.rollinginthebeef.dataclass.LoginUser
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.retrofits.authenticationAPI
 import retrofit2.Call
 import retrofit2.Callback
@@ -71,8 +71,8 @@ class EditProfileAdminActivity : AppCompatActivity() {
                 binding.edtUsernameEditAdmin.text.toString(),
                 md5(binding.edtPasswordEditAdmin.text.toString()),
                 md5(binding.edtCfPwEditAdmin.text.toString())
-            ).enqueue(object : Callback<loginUser> {
-                override fun onResponse(call: Call<loginUser>, response: Response<loginUser>) {
+            ).enqueue(object : Callback<LoginUser> {
+                override fun onResponse(call: Call<LoginUser>, response: Response<LoginUser>) {
                     if(response.isSuccessful){
                         Toast.makeText(applicationContext, "Edited information Successful", Toast.LENGTH_SHORT).show()
                         val loginPage = Intent(this@EditProfileAdminActivity, LoginActivity::class.java)
@@ -82,7 +82,7 @@ class EditProfileAdminActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<loginUser>, t: Throwable) {
+                override fun onFailure(call: Call<LoginUser>, t: Throwable) {
                     return t.printStackTrace()
                 }
             })

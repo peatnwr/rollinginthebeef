@@ -10,8 +10,8 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityAddStaffBinding
-import com.example.rollinginthebeef.modules.infoUserParcel
-import com.example.rollinginthebeef.modules.loginUser
+import com.example.rollinginthebeef.dataclass.LoginUser
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.retrofits.authenticationAPI
 import retrofit2.Call
 import retrofit2.Callback
@@ -79,8 +79,8 @@ class AddStaffActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                     userType,
                     binding.edtPassword.text.toString(),
                     binding.edtCfPassword.text.toString()
-                ).enqueue(object : Callback<loginUser> {
-                    override fun onResponse(call: Call<loginUser>, response: Response<loginUser>) {
+                ).enqueue(object : Callback<LoginUser> {
+                    override fun onResponse(call: Call<LoginUser>, response: Response<LoginUser>) {
                         if(response.isSuccessful){
                             Toast.makeText(applicationContext, "Add Staff Successfull", Toast.LENGTH_SHORT).show()
                             val setPermissionsPage = Intent(this@AddStaffActivity, SetPermissionsActivity::class.java)
@@ -89,7 +89,7 @@ class AddStaffActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                         }
                     }
 
-                    override fun onFailure(call: Call<loginUser>, t: Throwable) {
+                    override fun onFailure(call: Call<LoginUser>, t: Throwable) {
                         return t.printStackTrace()
                     }
                 })

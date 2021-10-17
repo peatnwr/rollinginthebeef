@@ -7,9 +7,9 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityAddProductAdminBinding
-import com.example.rollinginthebeef.modules.AddProduct
-import com.example.rollinginthebeef.modules.AddProductAdapter
-import com.example.rollinginthebeef.modules.infoUserParcel
+import com.example.rollinginthebeef.dataclass.AddProduct
+import com.example.rollinginthebeef.adapter.AddProductAdapter
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.retrofits.dataAPI
 import retrofit2.Call
 import retrofit2.Callback

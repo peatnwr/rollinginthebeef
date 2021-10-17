@@ -2,7 +2,6 @@ package com.example.rollinginthebeef.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
-import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,9 +11,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityProductAddAdminBinding
-import com.example.rollinginthebeef.modules.ProductList
-import com.example.rollinginthebeef.modules.infoUserParcel
-import com.example.rollinginthebeef.retrofits.authenticationAPI
+import com.example.rollinginthebeef.dataclass.ProductList
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.retrofits.dataAPI
 import com.google.firebase.storage.FirebaseStorage
 import retrofit2.Call

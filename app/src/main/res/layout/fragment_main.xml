@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F1">
+
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+        <SearchView
+            android:id="@+id/SearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Search"
+            android:searchIcon="@drawable/ic_search"
+            android:iconifiedByDefault="false"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/searchview_background"
+            android:queryBackground="@android:color/transparent" />
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/allproduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/buttom_stype"
+                    android:padding="5dp"
+                    android:text="ALL PRODUCT"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/c1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/buttom_stype"
+                    android:padding="5dp"
+                    android:text="Argentina Beef"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/c2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="Argentina Tenderloin"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:background="@drawable/buttom_stype" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/c3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="Australia-Beef"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:background="@drawable/buttom_stype" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/c4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:text="Japan Beef"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:background="@drawable/buttom_stype" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/c5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="US Beef"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:background="@drawable/buttom_stype" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/c6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wagyu Australia"
+                    android:textColor="@color/white"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:background="@drawable/buttom_stype" />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <TextView
+            android:id="@+id/recommended"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="recommended"
+            />
+        <!--        scrollbar       -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"/>
+        <!--        end         -->
+        <!--        layout-->
+
+        <!--        endlayout-->
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F1"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_back"/>
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Cart"
+            android:textAlignment="center"
+            android:layout_marginBottom="30dp"
+            android:textSize="24sp"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cartRV"
+        android:layout_width="match_parent"
+        android:layout_height="540dp"
+        android:scrollbars="vertical" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/searchview_background"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF9671"
+                    android:text="Total"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+                <TextView
+                    android:id="@+id/total_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textAlignment="textEnd"
+                    android:textSize="18sp"
+                    android:textColor="#FF9671"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/confirmBtn"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"
+        android:text="Confirm Order"
+        android:background="@drawable/buttom_stype"/>
+</LinearLayout>

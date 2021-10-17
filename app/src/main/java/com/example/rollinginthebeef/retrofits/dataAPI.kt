@@ -1,6 +1,6 @@
 package com.example.rollinginthebeef.retrofits
 
-import com.example.rollinginthebeef.modules.*
+import com.example.rollinginthebeef.dataclass.*
 import retrofit2.Call
 import retrofit2.http.*
 

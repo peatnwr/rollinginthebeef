@@ -6,8 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.rollinginthebeef.databinding.ActivityLoginBinding
-import com.example.rollinginthebeef.modules.infoUserParcel
-import com.example.rollinginthebeef.modules.loginUser
+import com.example.rollinginthebeef.dataclass.Account
+import com.example.rollinginthebeef.dataclass.LoginUser
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.retrofits.authenticationAPI
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,8 +38,8 @@ class LoginActivity : AppCompatActivity() {
         api.loginUser(
             binding.edtUsername.text.toString(),
             md5(binding.edtPassword.text.toString())
-        ).enqueue(object : Callback<loginUser> {
-            override fun onResponse(call: Call<loginUser>, response: Response<loginUser>) {
+        ).enqueue(object : Callback<LoginUser> {
+            override fun onResponse(call: Call<LoginUser>, response: Response<LoginUser>) {
                 if(response.isSuccessful){
                     val userID = response.body()?.user_id.toString().toInt()
                     val userName = response.body()?.user_username.toString()
@@ -49,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                     when(response.body()?.user_type.toString()){
                         "0" -> {
                             val mainActivity = Intent(this@LoginActivity, MainActivity::class.java)
-                            mainActivity.putExtra("userData", infoUserParcel(userID, userName, userTel, userAddress, userEmail, nameUser))
+                            mainActivity.putExtra("accountData", Account(binding.edtUsername.toString(), binding.edtPassword.text.toString()))
                             startActivity(mainActivity)
                         }
                         "1" -> {
@@ -68,8 +69,8 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<loginUser>, t: Throwable) {
-                Toast.makeText(applicationContext, "onFailure Alert!", Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<LoginUser>, t: Throwable) {
+                Toast.makeText(applicationContext, "Server isn't online now!", Toast.LENGTH_SHORT).show()
             }
         })
     }

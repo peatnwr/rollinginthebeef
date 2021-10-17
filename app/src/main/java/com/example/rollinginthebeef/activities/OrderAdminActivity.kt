@@ -6,9 +6,9 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityOrderAdminBinding
-import com.example.rollinginthebeef.modules.Order
-import com.example.rollinginthebeef.modules.OrderAdapter
-import com.example.rollinginthebeef.modules.infoUserParcel
+import com.example.rollinginthebeef.dataclass.Order
+import com.example.rollinginthebeef.adapter.OrderAdapter
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.retrofits.dataAPI
 import retrofit2.Call
 import retrofit2.Callback

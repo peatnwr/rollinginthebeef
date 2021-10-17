@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rollinginthebeef.R
+import com.example.rollinginthebeef.adapter.ProductOrderHistoryRiderAdapter
 import com.example.rollinginthebeef.databinding.ActivityOrderHistoryDetailRiderBinding
+import com.example.rollinginthebeef.dataclass.OrderHistoryDetail
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.modules.*
 import com.example.rollinginthebeef.retrofits.dataAPI
 import com.google.firebase.storage.FirebaseStorage

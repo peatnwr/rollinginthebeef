@@ -8,7 +8,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rollinginthebeef.adapter.ProductListConfirmPageAdapter
 import com.example.rollinginthebeef.databinding.ActivityConfirmOrderPaymentBinding
+import com.example.rollinginthebeef.dataclass.OrderDetail
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.example.rollinginthebeef.modules.*
 import com.example.rollinginthebeef.retrofits.dataAPI
 import com.google.firebase.storage.FirebaseStorage

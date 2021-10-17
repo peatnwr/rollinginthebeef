@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.rollinginthebeef.databinding.ActivityRegisterBinding
-import com.example.rollinginthebeef.modules.registerUser
+import com.example.rollinginthebeef.dataclass.RegisterUser
 import com.example.rollinginthebeef.retrofits.authenticationAPI
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +15,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.math.BigInteger
 import java.security.MessageDigest
-import kotlin.math.log
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -41,8 +40,8 @@ class RegisterActivity : AppCompatActivity() {
             binding.edtAddReg.text.toString(),
             binding.edtEmailReg.text.toString(),
             binding.edtNameReg.text.toString()
-        ).enqueue(object : Callback<registerUser> {
-            override fun onResponse(call: Call<registerUser>, response: Response<registerUser>) {
+        ).enqueue(object : Callback<RegisterUser> {
+            override fun onResponse(call: Call<RegisterUser>, response: Response<RegisterUser>) {
                 if(response.isSuccessful()){
                     Toast.makeText(applicationContext, "Register Successfully", Toast.LENGTH_SHORT).show()
                     val loginPage = Intent(this@RegisterActivity, LoginActivity::class.java)
@@ -54,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<registerUser>, t: Throwable) {
+            override fun onFailure(call: Call<RegisterUser>, t: Throwable) {
                 Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
             }
 

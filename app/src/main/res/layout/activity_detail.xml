@@ -6,6 +6,7 @@
     android:padding="20dp"
     android:orientation="vertical">
     <ImageButton
+        android:id="@+id/btnBack"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/ic_back"/>
@@ -21,15 +22,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="30dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/productImg"
                 android:layout_width="300dp"
                 android:layout_height="250dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/meat01"
                 />
         </RelativeLayout>
         <TextView
@@ -37,21 +38,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:text="Australia Wagyu Striplion MB 05-06"/>
+            android:layout_marginTop="10dp"
+            android:text="-"/>
         <TextView
             android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:textColor="#A8A8A8"
-            android:text="Australia Beef"/>
+            android:text="-"/>
         <TextView
             android:id="@+id/detail"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="เนื้อวากิว จากคุมาโมโตะ ประเทศญี่ปุ่น พันธ์ุญี่ปุ่นขนน้ำตาล เนื้อตัวนี้หอมมากได้ รสสัมผัสเนื้อแบบเต็มๆ กลิ่นหอมเป็นเอกลักษณ์ หอมนุ่มกำลังดี สำหรับคนไม่ชอบมันเยอะ"
+            android:text="-"
             />
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -59,25 +61,28 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price"
                 android:textSize="24sp"/>
             <TextView
+                android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2,440"
+                android:text="-"
                 android:textColor="#FF9671"
                 android:textSize="24sp"
                 android:textAlignment="textEnd"/>
         </LinearLayout>
 
     </LinearLayout>
+
     <Button
-        android:layout_marginTop="20dp"
+        android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttom_stype"
         android:text="Add to Cart"
-        android:background="@drawable/buttom_stype"/>
+        />
 </LinearLayout>

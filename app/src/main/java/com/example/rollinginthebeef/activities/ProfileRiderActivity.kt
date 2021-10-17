@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.PopupMenu
 import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.databinding.ActivityProfileRiderBinding
-import com.example.rollinginthebeef.modules.infoUserParcel
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 
 class ProfileRiderActivity : AppCompatActivity() {
 
