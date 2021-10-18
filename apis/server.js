@@ -668,7 +668,7 @@ app.post('/addstaff/', function(req, res) {
             if(results && results.length){
                 res.status(400).send({ error: true, message: "User already exist." })
             }else{
-                dbConn.query('INSERT INTO `user`(`user_username`, `user_password`, `user_tel`, `user_address`, `user_email`, `user_name`, `user_type`) VALUES (?,?,?,?,?,?,?)', [userUsername, userPassword, userTel, userAddress, userEmail, nameUser, userType], function(error, results, fields) {
+                dbConn.query('INSERT INTO `user`(`user_username`, `user_password`, `user_tel`, `user_address`, `user_email`, `user_name`, `user_type`) VALUES (?,md5(?),?,?,?,?,?)', [userUsername, userPassword, userTel, userAddress, userEmail, nameUser, userType], function(error, results, fields) {
                     if(error) throw error;
                     res.send(results);
                 });

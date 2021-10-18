@@ -11,17 +11,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_back"/>
         <TextView
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Notification"
             android:textSize="24sp"
             android:layout_marginTop="10dp"
-            android:textAlignment="center"/>
+            android:textAlignment="center" />
     </LinearLayout>
     <TextView
         android:id="@+id/title"

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rollinginthebeef.activities.OrderDetailActivity
 import com.example.rollinginthebeef.databinding.OrderHistoryUserItemLayoutBinding
@@ -48,6 +49,7 @@ class OrderHistoryAdapter(var orderList: ArrayList<OrderHistory>?, val account: 
         binding.orderDate.text = "Order Date : " + timeFormatter(orderList!![position].order_date)
         if (orderList!![position].order_status == 5) {
             binding.orderTotal.text = "Canceled"
+            binding.viewOrder.isVisible = false
         }else{
             binding.orderTotal.text = "Total : " + orderList!![position].order_total.toString() + " ฿"
             binding.viewOrder.setOnClickListener {
