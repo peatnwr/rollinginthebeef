@@ -2,6 +2,7 @@ package com.example.rollinginthebeef.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rollinginthebeef.*
@@ -14,6 +15,7 @@ import com.example.rollinginthebeef.fragment.DeliveryStatusFragment
 import com.example.rollinginthebeef.fragment.MainFragment
 import com.example.rollinginthebeef.fragment.ProfileFragment
 import com.example.rollinginthebeef.databinding.ActivityMainBinding
+import com.example.rollinginthebeef.fragment.NotificationFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         var accountData = intent.extras
         var account: Account? = accountData?.getParcelable("accountData")
+        Log.d("Username : ", account?.username.toString())
 
 
         binding.bottomNavigationView.background = null
@@ -58,6 +61,16 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(
                         R.id.frameLayout,
                         fragmentStatus
+                    ).commit()
+                }
+                R.id.miBell -> {
+                    val bundle =  Bundle()
+                    bundle.putParcelable("accountData", account)
+                    val fragmentNotification = NotificationFragment()
+                    fragmentNotification.arguments = bundle
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        fragmentNotification
                     ).commit()
                 }
                 R.id.miUser -> {

@@ -3,6 +3,7 @@ package com.example.rollinginthebeef.activities
 import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -55,6 +56,12 @@ class DetailActivity : AppCompatActivity() {
             var intent = Intent(this@DetailActivity, MainActivity::class.java)
             intent.putExtra("accountData", Account(account?.username, account?.password))
             startActivity(intent)
+        }
+
+        if (item?.product_qty == 0){
+            bindingDetail.btnAdd.isEnabled = false
+            bindingDetail.btnAdd.setBackgroundColor(Color.parseColor("#808080"))
+            bindingDetail.btnAdd.setText("Out of stock")
         }
 
         bindingDetail.btnAdd.setOnClickListener {

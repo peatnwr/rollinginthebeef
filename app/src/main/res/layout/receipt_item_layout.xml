@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        >
-        <TextView
-            android:id="@+id/Product_Amount"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:textAlignment="center"
-            android:text="amount"/>
-        <TextView
-            android:id="@+id/Product_Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:text="Name"
-            android:layout_toRightOf="@id/Product_Amount"/>
-        <TextView
-            android:id="@+id/Product_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Price"
-            android:textAlignment="textEnd"
-            android:layout_toRightOf="@id/Product_Name"/>
-    </RelativeLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/product_amount"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:text="1"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/product_amount"
+        android:text="WAGYU KUMAMOTO A3 "
+        android:textAllCaps="true" />
+
+    <TextView
+        android:paddingLeft="5dp"
+        android:id="@+id/product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="3,550"
+        android:textAlignment="textEnd" />
+
+</RelativeLayout>

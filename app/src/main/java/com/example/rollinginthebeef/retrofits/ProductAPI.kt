@@ -8,6 +8,11 @@ interface ProductAPI {
     @GET("allproduct")
     fun retrieveProduct(): Call<List<ProductMain>>
 
+    @GET("editproductadmin/{product_name}")
+    fun editProduct(
+        @Path("product_name") product_name: String
+    ): Call<ProductList>
+
     @GET("allcategory")
     fun retrieveCategory(): Call<List<Category>>
 

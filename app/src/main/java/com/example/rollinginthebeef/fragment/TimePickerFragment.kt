@@ -23,7 +23,8 @@ class TimePickerFragment:DialogFragment(), TimePickerDialog.OnTimeSetListener {
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         val tranferTime: Button = activity?.findViewById(R.id.tranferTime) as Button
         val minuteNew: String = if(minute<10) "0${minute.toString()}" else minute.toString()
-        tranferTime.text = "Hour : Minute\n$hourOfDay:$minuteNew"
+        tranferTime.text = "$hourOfDay:$minuteNew"
+
     }
 
     override fun onCancel(dialog: DialogInterface) {

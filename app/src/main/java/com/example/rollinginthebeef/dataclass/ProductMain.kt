@@ -23,5 +23,8 @@ class ProductMain (
     @SerializedName("category_id") val product_category: Int,
 
     @Expose
+    @SerializedName("product_qty") val product_qty: Int,
+
+    @Expose
     @SerializedName("category_name") val category_name: String
 ){}

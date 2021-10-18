@@ -77,16 +77,22 @@ class SendReceiptActivity : AppCompatActivity() {
         sendReceiptBinding.tranferTime.setOnClickListener {
             val newTimeFragment = TimePickerFragment()
             newTimeFragment.show(supportFragmentManager, "Time Picker")
+
         }
     }
 
     override fun onResume() {
         super.onResume()
+        checkTime()
         callReceiptProduct()
         callReceiptDetail()
         if (checkReceipt.equals("1") && checkTranfer.equals("1")){
             sendReceiptBinding.uploadImage.isEnabled = true
         }
+    }
+
+    fun checkTime(){
+        checkTranfer = "1"
     }
 
     fun timeFormatter(dateOrder: String): String{
@@ -95,7 +101,6 @@ class SendReceiptActivity : AppCompatActivity() {
             simpleDateFormat.timeZone = TimeZone.getTimeZone("GMT")
             val date = simpleDateFormat.parse(dateOrder)
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            checkTranfer = "1"
             return dateFormat.format(date)
         } catch (e: Exception) {
             return ""
@@ -130,6 +135,8 @@ class SendReceiptActivity : AppCompatActivity() {
 
         val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
         val now = Date()
+        val transferFormatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        var tranferTime = transferFormatter.format(now)
         val filename = formatter.format(now) + order_id
         val storageReference = FirebaseStorage.getInstance().getReference("images/$filename")
 

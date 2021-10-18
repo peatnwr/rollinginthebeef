@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                     when(response.body()?.user_type.toString()){
                         "0" -> {
                             val mainActivity = Intent(this@LoginActivity, MainActivity::class.java)
-                            mainActivity.putExtra("accountData", Account(binding.edtUsername.toString(), binding.edtPassword.text.toString()))
+                            mainActivity.putExtra("accountData", Account(binding.edtUsername.text.toString(), binding.edtPassword.text.toString()))
                             startActivity(mainActivity)
                         }
                         "1" -> {

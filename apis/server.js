@@ -81,11 +81,22 @@ app.get('/orderhistoryrider/', function(req, res) {
 })
 
 app.get('/allproduct/', function(req, res) {
-    dbConn.query('SELECT `product`.`product_id`, `product`.`product_name`, `product`.`product_price`, `product`.`product_detail`, `product`.`product_img`, `product`.`category_id`, `category`.`category_name` FROM product, category WHERE `product`.`category_id` = `category`.`category_id`', function(error, results, fields) {
+    dbConn.query('SELECT `product`.`product_id`, `product`.`product_name`, `product`.`product_price`, `product`.`product_detail`, `product`.`product_img`, `product`.`product_qty` ,`product`.`category_id`, `category`.`category_name` FROM product, category WHERE `product`.`category_id` = `category`.`category_id`', function(error, results, fields) {
         if(error) throw error;
         return res.send(results);
     });
 });
+
+app.get('/editproductadmin/:product_name', function(req,res){
+    var product_name = req.params.product_name
+    dbConn.query('SELECT product_name, product_price, product_detail, product_img, product_qty, category_id FROM product WHERE product_name = ?', [product_name], function(error, results, fields){
+        if (results[0]){
+            return res.send(results[0])
+        }else{
+            throw error;
+        }
+    })
+})
 
 app.get('/order/', function(req, res) {
     dbConn.query('SELECT `user`.`user_id`, `user`.`user_username`, `user`.`user_name`, `order`.`order_id`, `order`.`order_date`, `order`.`order_total`, `order`.`order_status` FROM `user`, `order` WHERE `user`.`user_id` = `order`.`user_id` AND `order`.`order_status` = 2', function(error, results, fields) {
@@ -388,9 +399,23 @@ app.put('/addreceipt/:order_id', function(req, res) {
     if (!img_name){
         return res.status(400).send({ error:true, message: 'No Image Founded'});
     }
-    dbConn.query("UPDATE `order` SET order_status = 2, receipt_img = ?, receipt_time = ? WHERE order_id = ? ", [img_name, tranfer_time, order_id], function(error, results, fileds){
+    dbConn.query("UPDATE `order` SET order_status = 2, receipt_img = ?, receipt_time = ? WHERE order_id = " + order_id, [img_name, tranfer_time], function(error, results, fields){
         if (results){
-            return res.json("Successfully Uploaded")
+            dbConn.query("SELECT orderdetail.product_id FROM orderdetail,product WHERE orderdetail.order_id = ? AND product.product_id = orderdetail.product_id", [order_id], function(err, ress, field){
+                if (ress){
+                    for (let i = 0 ; i < ress.length; i++){
+                        var product = ress[i].product_id
+                        dbConn.query("UPDATE product SET product.product_qty = product.product_qty - (SELECT orderdetail.orderdetail_qty FROM orderdetail WHERE orderdetail.product_id = ? AND orderdetail.order_id = ?) WHERE product.product_id = ?", [product, order_id, product], function(er, re, fi){
+                            if (re){
+                                console.log(product)
+                            }else{
+                                console.log(product)
+                            }
+                        })
+                    }
+                }
+            })
+            return res.send(results)
         }else{
             return res.status(400).send({ error: true, message: 'Upload Failed !!!' })
         }
@@ -408,6 +433,21 @@ app.post('/addproduct/', function(req, res) {
     let categoryId = data.category_id
 
     dbConn.query('INSERT INTO `product`(`product_name`, `product_price`, `product_detail`, `product_img`, `product_qty`, `category_id`) VALUES (?, ?, ?, ?, ?, ?)', [productName, productPrice, productDetail, productImg, productQty, categoryId], function(error, results, fields) {
+        if(error) throw error;
+        return res.send(results);
+    });
+});
+
+app.post('/editproduct/', function(req, res) {
+    let data = req.body
+    let productName = data.product_name
+    let productPrice = data.product_price
+    let productDetail = data.product_detail
+    let productImg = data.product_img
+    let productQty = data.product_qty
+    let categoryId = data.category_id
+
+    dbConn.query('UPDATE product SET `product_name` = ?, `product_price` = ?, `product_detail` = ?, `product_img` = ?, `product_qty` = ?, `category_id` = ? WHERE product_name = ?', [productName, productPrice, productDetail, productImg, productQty, categoryId, productName], function(error, results, fields) {
         if(error) throw error;
         return res.send(results);
     });
@@ -638,6 +678,17 @@ app.post('/addstaff/', function(req, res) {
         res.status(400).send({ error: true, message: "Password and Confirm Password does not match." })
     }
 });
+
+app.get('/getalluserorder/:username', function(req,res){
+    var username = req.params.username
+    dbConn.query("SELECT * FROM `order` WHERE `order`.`user_id` = (SELECT `user`.`user_id` FROM `user` WHERE `user`.`user_username` = ?) and `order`.`order_status` NOT IN (0,1,2) ORDER BY `order`.`order_id` DESC", [username], function(error, results, fields){
+        if (results){
+            return res.send(results)
+        }else{
+            return res.status(400).send({error: true, message: "No order found"})
+        }
+    })
+})
 
 app.listen(3000, function() {
     console.log('Node app is running on port 3000');

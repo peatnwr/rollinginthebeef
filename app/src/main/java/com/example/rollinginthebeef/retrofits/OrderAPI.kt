@@ -40,6 +40,11 @@ interface OrderAPI {
         @Path("user_name") user_name: String
     ):Call<List<OrderHistory>>
 
+    @GET("getalluserorder/{user_name}")
+    fun getAllUserOrder(
+        @Path("user_name") user_name:String
+    ):Call<List<OrderHistory>>
+
     @GET("activeorder/{user_name}")
     fun getActiveOrder(
         @Path("user_name") user_name: String

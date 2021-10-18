@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Rollinginthebeef"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ProductEditAdmin"
+            android:exported="false" />
+        <activity
             android:name=".activities.SendReceiptActivity"
             android:exported="false" />
         <activity

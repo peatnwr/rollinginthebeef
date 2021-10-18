@@ -1,6 +1,7 @@
 package com.example.rollinginthebeef.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,12 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.rollinginthebeef.activities.ProductEditAdmin
 import com.example.rollinginthebeef.databinding.AddProductItemLayoutBinding
 import com.example.rollinginthebeef.dataclass.AddProduct
+import com.example.rollinginthebeef.dataclass.infoUserParcel
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
-class AddProductAdapter(val addProductList: ArrayList<AddProduct>, val context: Context) : RecyclerView.Adapter<AddProductAdapter.ViewHolder>() {
+class AddProductAdapter(val addProductList: ArrayList<AddProduct>, val context: Context, val adminData: infoUserParcel?)
+    : RecyclerView.Adapter<AddProductAdapter.ViewHolder>() {
     inner class ViewHolder(view: View, val binding: AddProductItemLayoutBinding) : RecyclerView.ViewHolder(view){}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,6 +40,15 @@ class AddProductAdapter(val addProductList: ArrayList<AddProduct>, val context: 
         binding.categoryName.text = addProductList!![position].category_name
         binding.stockItem.text = "Stock : " + addProductList!![position].product_qty
         binding.productPrice.text = addProductList!![position].product_price.toString() + " bath"
+        binding.productCard.setOnClickListener{
+            var intent = Intent(context, ProductEditAdmin::class.java)
+            intent.putExtra("adminData", adminData)
+            intent.putExtra("productName", addProductList!![position].product_name)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+
     }
 
     override fun getItemCount(): Int {

@@ -39,6 +39,17 @@ interface dataAPI {
         @Field("category_id") category_id: Int
     ): Call<ProductList>
 
+    @POST("editproduct")
+    @FormUrlEncoded
+    fun editProduct(
+        @Field("product_name") product_name: String,
+        @Field("product_price") product_price: Int,
+        @Field("product_detail") product_detail: String,
+        @Field("product_img") product_img: String,
+        @Field("product_qty") product_qty: Int,
+        @Field("category_id") category_id: Int
+    ): Call<ProductList>
+
     @GET("userpermission")
     fun retrieveUser(): Call<List<UserPermission>>
 

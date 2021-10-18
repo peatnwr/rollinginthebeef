@@ -32,7 +32,7 @@ class AddProductAdminActivity : AppCompatActivity() {
         val data = intent.extras
         val adminData: infoUserParcel? = data?.getParcelable("adminData")
 
-        binding.recyclerViewAddProductAdmin.adapter = AddProductAdapter(this.searchList, applicationContext)
+        binding.recyclerViewAddProductAdmin.adapter = AddProductAdapter(this.searchList, applicationContext, adminData)
         binding.recyclerViewAddProductAdmin.layoutManager = LinearLayoutManager(applicationContext)
 
         binding.bottomNavigationView.background = null
@@ -118,6 +118,8 @@ class AddProductAdminActivity : AppCompatActivity() {
     }
 
     fun callProductData(){
+        val data = intent.extras
+        val adminData: infoUserParcel? = data?.getParcelable("adminData")
         addProductList.clear()
         val api: dataAPI = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3000/")
@@ -130,7 +132,7 @@ class AddProductAdminActivity : AppCompatActivity() {
                     addProductList.add(AddProduct(it.product_name, it.product_price, it.product_img, it.product_qty, it.category_name))
                 }
                 searchList.addAll(addProductList)
-                binding.recyclerViewAddProductAdmin.adapter = AddProductAdapter(searchList, applicationContext)
+                binding.recyclerViewAddProductAdmin.adapter = AddProductAdapter(searchList, applicationContext, adminData)
             }
 
             override fun onFailure(call: Call<List<AddProduct>>, t: Throwable) {

@@ -46,6 +46,7 @@ class EditProfileAdminActivity : AppCompatActivity() {
         edtTel.setText(adminData?.userTel)
         edtAddress.setText(adminData?.userAddress)
         edtUsername.setText(adminData?.userName)
+        edtUsername.isEnabled = false
         edtPassword.setText("")
         edtCfPassword.setText("")
     }

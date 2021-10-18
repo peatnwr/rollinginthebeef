@@ -3,11 +3,13 @@ package com.example.rollinginthebeef.adapter
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.rollinginthebeef.R
 import com.example.rollinginthebeef.activities.DetailActivity
 import com.example.rollinginthebeef.databinding.ProductItemLayoutBinding
 import com.example.rollinginthebeef.dataclass.Account
@@ -37,12 +39,11 @@ class ProductUserAdapter(var productList: ArrayList<ProductMain>?, val account: 
         }.addOnFailureListener {
             Log.d("Exception Failure: ", "Failure Listener Image Receive")
         }
-
         binding.itemCard.setOnClickListener{
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("cartItem", CartItem(productList!![position].product_name, productList!![position].product_detail,
                 productList!![position].product_price, productList!![position].category_name,
-                productList!![position].product_id, productList!![position].product_img)
+                productList!![position].product_id, productList!![position].product_img, productList!![position].product_qty)
             )
             intent.putExtra("account", Account(account?.username, account?.password))
             context.startActivity(intent)

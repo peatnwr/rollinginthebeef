@@ -88,14 +88,13 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:textAlignment="center"
-                android:text="1"/>
+                android:textAlignment="center"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/receiptRV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                />
+                android:orientation="vertical" />
         </RelativeLayout>
         <View
             android:layout_width="match_parent"

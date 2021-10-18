@@ -172,7 +172,7 @@ class MainFragment : Fragment() {
                 override fun onResponse(call: Call<List<ProductMain>>, response: Response<List<ProductMain>>) {
                     if (response.isSuccessful){0
                         response.body()?.forEach {
-                            productList.add(ProductMain(it.product_id, it.product_name, it.product_price, it.product_detail, it.product_img, it.product_category, it.category_name))
+                            productList.add(ProductMain(it.product_id, it.product_name, it.product_price, it.product_detail, it.product_img, it.product_category, it.product_qty,it.category_name))
                         }
                         searchList.addAll(productList)
                         bindingFragMain.recyclerView.adapter = ProductUserAdapter(searchList, account, requireContext())

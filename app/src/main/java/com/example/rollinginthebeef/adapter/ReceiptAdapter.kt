@@ -21,9 +21,9 @@ class ReceiptAdapter(var receiptList: ArrayList<ReceiptProduct>?, val context: C
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
-        binding.ProductAmount.text = receiptList!![position].order_qty.toString()
-        binding.ProductName.text = receiptList!![position].product_name
-        binding.ProductPrice.text = receiptList!![position].total.toString()
+        binding.productAmount.text = receiptList!![position].order_qty.toString()
+        binding.productName.text = receiptList!![position].product_name
+        binding.productPrice.text = receiptList!![position].total.toString()
     }
 
     override fun getItemCount(): Int {
